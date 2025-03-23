@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.ProfilePage"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+             Title="ข้อมูลนักศึกษา"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#1C1C1E}">
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto"
+              RowSpacing="30"
+              Padding="24"
+              BackgroundColor="{AppThemeBinding Light=White, Dark=#1C1C1E}">
+      
+          <Grid Grid.Row="0"
+          ColumnDefinitions="Auto,*"
+          RowDefinitions="Auto,*">
+          
+  <!-- Back Button -->
+    <Button Grid.Row="0"
+            Text="ย้อนกลับ"
+            Command="{Binding goBackCommand}"
+            BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"
+            TextColor="White"
+            FontSize="16"
+            CornerRadius="20"
+            HeightRequest="44"
+            WidthRequest="100"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"/>
+            
+    <!-- Profile Image -->
+    <Image Grid.Row="0"
+           Source="{Binding ProfileImage}"
+           HeightRequest="120"
+           WidthRequest="120"
+           HorizontalOptions="Center"
+           VerticalOptions="End"
+           Margin="0,100,0,0"/>
+    </Grid>
+  
+            
+            <VerticalStackLayout Grid.Row="1"
+                                 Spacing="24">
+                <Label Text="ข้อมูลนักศึกษา"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"
+                       Margin="0,0,0,8" />
+                       
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                      ColumnDefinitions="Auto,*"
+                      RowSpacing="20"
+                      ColumnSpacing="24">
+                          
+                    <Label Text="รหัสนักศึกษา" 
+                           Grid.Row="0" 
+                           Grid.Column="0" 
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                    <Label Text="{Binding StudentId}" 
+                           Grid.Row="0" 
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                    
+                    <Label Text="ชื่อ-นามสกุล" 
+                           Grid.Row="1" 
+                           Grid.Column="0" 
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                    <Label Text="{Binding FullName}" 
+                           Grid.Row="1" 
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                    
+                    <Label Text="คณะ" 
+                           Grid.Row="2" 
+                           Grid.Column="0" 
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                    <Label Text="{Binding Faculty}" 
+                           Grid.Row="2" 
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                    
+                    <Label Text="สาขา" 
+                           Grid.Row="3" 
+                           Grid.Column="0" 
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                    <Label Text="{Binding Major}" 
+                           Grid.Row="3" 
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                    
+                    <Label Text="ชั้นปี" 
+                           Grid.Row="4" 
+                           Grid.Column="0" 
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                    <Label Text="{Binding YearDisplay}" 
+                           Grid.Row="4" 
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                    
+                    <Label Text="เกรดเฉลี่ย" 
+                           Grid.Row="5" 
+                           Grid.Column="0" 
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                    <Label Text="{Binding GpaDisplay}" 
+                           Grid.Row="5" 
+                           Grid.Column="1"
+                           FontSize="16"
+                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                </Grid>
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout Grid.Row="2"
+                                 Spacing="16"
+                                 Margin="0,10,0,0">
+                <Label Text="รายวิชาที่ลงทะเบียน" 
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"
+                       Margin="0,0,0,8" />
+                       
+                <CollectionView ItemsSource="{Binding CurrentCourses}" 
+                               EmptyView="ไม่มีรายวิชาที่ลงทะเบียน">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="0,8" 
+                                   Stroke="{AppThemeBinding Light=#f5f5f7, Dark=#2C2C2E}"
+                                   StrokeThickness="1"
+                                   StrokeShape="RoundRectangle 12">
+                                <Grid Padding="20" 
+                                      RowDefinitions="Auto,Auto"
+                                      RowSpacing="12">
+                                    <Label Text="{Binding Name}" 
+                                           Grid.Row="0"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                                           
+                                    <Grid Grid.Row="1"
+                                          ColumnDefinitions="Auto,*,Auto,*"
+                                          RowDefinitions="Auto,Auto"
+                                          ColumnSpacing="16"
+                                          RowSpacing="12">
+                                        
+                                        <Label Text="รหัสวิชา" 
+                                               Grid.Row="0" 
+                                               Grid.Column="0" 
+                                               FontSize="14"
+                                               TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                                        <Label Text="{Binding CourseId}" 
+                                               Grid.Row="0" 
+                                               Grid.Column="1"
+                                               FontSize="14"
+                                               TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                                        
+                                        <Label Text="อาจารย์" 
+                                               Grid.Row="0" 
+                                               Grid.Column="2" 
+                                               FontSize="14"
+                                               TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                                        <Label Text="{Binding Instructor}" 
+                                               Grid.Row="0" 
+                                               Grid.Column="3"
+                                               FontSize="14"
+                                               TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                                        
+                                        <Label Text="ตารางเรียน" 
+                                               Grid.Row="1" 
+                                               Grid.Column="0" 
+                                               FontSize="14"
+                                               TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}" />
+                                        <Label Text="{Binding Schedule}" 
+                                               Grid.Row="1" 
+                                               Grid.Column="1"
+                                               Grid.ColumnSpan="3"
+                                               FontSize="14"
+                                               TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}" />
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+            
+        </Grid>
+    </ScrollView>
+</ContentPage>

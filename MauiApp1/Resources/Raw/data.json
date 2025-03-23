@@ -1,0 +1,261 @@
+{
+  "students": [
+    {
+      "id": "6310001234",
+      "email": "student1@example.com",
+      "password": "1",
+      "firstName": "ทันจิโร่",
+      "lastName": "คามาโดะ",
+      "faculty": "วิศวกรรมศาสตร์",
+      "major": "วิศวกรรมคอมพิวเตอร์",
+      "year": 3,
+      "gpa": 3.75,
+      "profileImage": "student1.png"
+    },
+    {
+      "id": "6310005678",
+      "email": "student2@example.com",
+      "password": "2",
+      "firstName": "เซนอิทสึ",
+      "lastName": "อะกะสึมะ",
+      "faculty": "วิทยาศาสตร์",
+      "major": "วิทยาการคอมพิวเตอร์",
+      "year": 2,
+      "gpa": 3.89,
+      "profileImage": "student2.png"
+    }
+  ],
+  "courses": [
+    {
+      "courseId": "2110101",
+      "name": "การเขียนโปรแกรมคอมพิวเตอร์",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.สมศักดิ์ เทพสุวรรณ",
+      "schedule": "จันทร์ 9:00-12:00",
+      "room": "ENG3-201",
+      "maxStudents": 40,
+      "currentStudents": 35,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "1/2566",
+      "prerequisites": [],
+      "description": "ศึกษาหลักการเขียนโปรแกรมคอมพิวเตอร์ แนวคิดการเขียนโปรแกรมเชิงวัตถุ และการเขียนโปรแกรมภาษา Python",
+      "status": "open"
+    },
+    {
+      "courseId": "2110200",
+      "name": "โครงสร้างข้อมูล",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.วิชัย สุขสมบูรณ์",
+      "schedule": "อังคาร 13:00-16:00",
+      "room": "ENG3-301",
+      "maxStudents": 35,
+      "currentStudents": 30,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "1/2566",
+      "prerequisites": ["2110101"],
+      "description": "ศึกษาโครงสร้างข้อมูลพื้นฐาน อาร์เรย์ ลิงค์ลิสต์ สแตค คิว ทรี กราฟ และอัลกอริทึมที่เกี่ยวข้อง",
+      "status": "open"
+    },
+    {
+      "courseId": "2110215",
+      "name": "วิศวกรรมซอฟต์แวร์",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.นภา วงศ์ไทย",
+      "schedule": "พุธ 9:00-12:00",
+      "room": "ENG3-401",
+      "maxStudents": 30,
+      "currentStudents": 25,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "1/2566",
+      "prerequisites": ["2110101"],
+      "description": "หลักการวิศวกรรมซอฟต์แวร์ กระบวนการพัฒนาซอฟต์แวร์ การวิเคราะห์ความต้องการ การออกแบบซอฟต์แวร์ การทดสอบซอฟต์แวร์",
+      "status": "open"
+    },
+    {
+      "courseId": "2110332",
+      "name": "การวิเคราะห์และออกแบบอัลกอริทึม",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ประภาส สุวรรณเพชร",
+      "schedule": "พฤหัสบดี 13:00-16:00",
+      "room": "ENG3-501",
+      "maxStudents": 30,
+      "currentStudents": 28,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "1/2566",
+      "prerequisites": ["2110200"],
+      "description": "การวิเคราะห์ประสิทธิภาพของอัลกอริทึม การออกแบบอัลกอริทึมด้วยเทคนิคต่างๆ เช่น divide and conquer, greedy, dynamic programming",
+      "status": "open"
+    },
+    {
+      "courseId": "2110422",
+      "name": "เทคโนโลยีเว็บและเว็บเซอร์วิส",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.สุรีย์ พงศ์อารักษ์",
+      "schedule": "ศุกร์ 9:00-12:00",
+      "room": "ENG3-201",
+      "maxStudents": 35,
+      "currentStudents": 20,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "1/2566",
+      "prerequisites": ["2110215"],
+      "description": "เทคโนโลยีเว็บสมัยใหม่ การพัฒนาเว็บแอปพลิเคชัน เว็บเซอร์วิส RESTful API และการพัฒนาแอปพลิเคชันแบบ Single Page",
+      "status": "open"
+    }
+  ],
+  "registrations": {
+    "6310001234": {
+      "current": [
+        {
+          "courseId": "2110200",
+          "term": "1/2566",
+          "registrationDate": "2023-06-15T10:30:00",
+          "status": "registered"
+        },
+        {
+          "courseId": "2110215",
+          "term": "1/2566",
+          "registrationDate": "2023-06-15T10:35:00",
+          "status": "registered"
+        },
+        {
+          "courseId": "2110422",
+          "term": "1/2566",
+          "registrationDate": "2023-06-16T09:15:00",
+          "status": "withdrawn",
+          "withdrawDate": "2023-08-25T14:30:00"
+        }
+      ],
+      "previous": [
+        {
+          "courseId": "2110101",
+          "term": "2/2565",
+          "grade": "A",
+          "registrationDate": "2022-11-10T09:15:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110332",
+          "term": "3/2565",
+          "grade": "B+",
+          "registrationDate": "2023-03-05T14:20:00",
+          "status": "completed"
+        }
+      ]
+    },
+    "6310005678": {
+      "current": [
+        {
+          "courseId": "2110101",
+          "term": "1/2566",
+          "registrationDate": "2023-06-14T11:20:00",
+          "status": "registered"
+        },
+        {
+          "courseId": "2110332",
+          "term": "1/2566",
+          "registrationDate": "2023-06-14T11:25:00",
+          "status": "withdrawn",
+          "withdrawDate": "2023-08-20T13:45:00"
+        }
+      ],
+      "previous": [
+        {
+          "courseId": "2110200",
+          "term": "3/2565",
+          "grade": "A",
+          "registrationDate": "2023-03-06T10:10:00",
+          "status": "completed"
+        }
+      ]
+    }
+  },
+  "terms": [
+    {
+      "id": "1/2566",
+      "name": "ภาคต้น ปีการศึกษา 2566",
+      "isCurrent": true,
+      "startDate": "2023-08-15",
+      "endDate": "2023-12-15",
+      "registrationPeriod": {
+        "start": "2023-06-10",
+        "end": "2023-06-20"
+      },
+      "addDropPeriod": {
+        "start": "2023-08-15",
+        "end": "2023-08-30"
+      },
+      "withdrawDeadline": "2023-10-30"
+    },
+    {
+      "id": "3/2565",
+      "name": "ภาคฤดูร้อน ปีการศึกษา 2565",
+      "isCurrent": false,
+      "startDate": "2023-04-01",
+      "endDate": "2023-06-01",
+      "registrationPeriod": {
+        "start": "2023-03-01",
+        "end": "2023-03-10"
+      },
+      "addDropPeriod": {
+        "start": "2023-04-01",
+        "end": "2023-04-15"
+      },
+      "withdrawDeadline": "2023-05-15"
+    },
+    {
+      "id": "2/2565",
+      "name": "ภาคปลาย ปีการศึกษา 2565",
+      "isCurrent": false,
+      "startDate": "2022-11-15",
+      "endDate": "2023-03-15",
+      "registrationPeriod": {
+        "start": "2022-10-15",
+        "end": "2022-10-25"
+      },
+      "addDropPeriod": {
+        "start": "2022-11-15",
+        "end": "2022-11-30"
+      },
+      "withdrawDeadline": "2023-01-31"
+    },
+    {
+      "id": "1/2565",
+      "name": "ภาคต้น ปีการศึกษา 2565",
+      "isCurrent": false,
+      "startDate": "2022-08-15",
+      "endDate": "2022-12-15",
+      "registrationPeriod": {
+        "start": "2022-07-10",
+        "end": "2022-07-20"
+      },
+      "addDropPeriod": {
+        "start": "2022-08-15",
+        "end": "2022-08-30"
+      },
+      "withdrawDeadline": "2022-10-30"
+    }
+  ],
+  "registrationStatus": [
+    {
+      "code": "registered",
+      "description": "ลงทะเบียนเรียบร้อยแล้ว"
+    },
+    {
+      "code": "withdrawn",
+      "description": "ถอนรายวิชาแล้ว"
+    },
+    {
+      "code": "completed",
+      "description": "เรียนจบแล้ว มีเกรด"
+    },
+    {
+      "code": "cancelled",
+      "description": "ยกเลิกการลงทะเบียน"
+    }
+  ]
+}

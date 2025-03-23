@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.RegistrationPage"
+             Title="ลงทะเบียนเรียน"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#1C1C1E}">
+
+    <Grid RowDefinitions="Auto,*"
+          Padding="20">
+          
+        <Button Grid.Row="0"
+                Text="ย้อนกลับ"
+                Command="{Binding GoBackCommand}"
+                HorizontalOptions="Start"
+                Margin="0,0,0,20"
+                BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"
+                TextColor="White"
+                CornerRadius="20"
+                HeightRequest="40"
+                WidthRequest="100"/>
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding AvailableCourses}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,8"
+                           Padding="16"
+                           BorderColor="Transparent"
+                           BackgroundColor="{AppThemeBinding Light=#f5f5f7, Dark=#2C2C2E}"
+                           CornerRadius="12">
+                        <Grid RowDefinitions="Auto,Auto,Auto"
+                              RowSpacing="8">
+                            <Label Grid.Row="0"
+                                   Text="{Binding Name}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                            
+                            <Grid Grid.Row="1"
+                                  ColumnDefinitions="Auto,*,Auto,*">
+                                <Label Grid.Column="0"
+                                       Text="รหัสวิชา:"
+                                       TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding CourseId}"
+                                       TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                                <Label Grid.Column="2"
+                                       Text="หน่วยกิต:"
+                                       TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                <Label Grid.Column="3"
+                                       Text="{Binding Credits}"
+                                       TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                            </Grid>
+
+                            <Button Grid.Row="2"
+                                    Text="ลงทะเบียน"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.RegisterCourseCommand}"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"
+                                    TextColor="White"
+                                    CornerRadius="20"
+                                    HeightRequest="40"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.HomePage"
+             Title="ข้อมูลนักศึกษา"
+             BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#1F1F1F}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <!-- ส่วนหัว -->
+            <Grid RowDefinitions="Auto" ColumnDefinitions="*,Auto" Margin="0,15,0,10">
+                <Label Grid.Column="0"
+                       Text="ยินดีต้อนรับ"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                       VerticalOptions="Center"/>
+                
+                <Image Grid.Column="1"
+                       Source="settings.png"
+                       HeightRequest="24"
+                       WidthRequest="24"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"/>
+            </Grid>
+
+            <!-- โปรไฟล์ -->
+            <Frame BorderColor="Transparent"
+                   CornerRadius="16"
+                   Padding="0"
+                   Margin="0,0,0,15"
+                   BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
+                   HasShadow="True">
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*">
+                    <VerticalStackLayout Grid.Row="0" Grid.RowSpan="2" 
+                                         Margin="20,40,20,20"
+                                         Spacing="15">
+                        <!-- รูปโปรไฟล์ -->
+                        <Border StrokeShape="RoundRectangle 50,50,50,50"
+                               Stroke="White"
+                               StrokeThickness="2"
+                               BackgroundColor="Transparent"
+                               Padding="0"
+                               HeightRequest="100"
+                               WidthRequest="100"
+                               HorizontalOptions="Center">
+                            <Image Source="{Binding ProfileImage}"
+                                   Aspect="AspectFill"/>
+                        </Border>
+                        
+                        <!-- ข้อมูลส่วนตัว -->
+                        <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                            <Label Text="{Binding FullName}"
+                                   FontSize="24"
+                                   TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"/>
+                            
+                            <Label Text="{Binding Email}"
+                                   TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                                   FontSize="16"
+                                   HorizontalOptions="Center"/>
+                            
+                            <Label Text="{Binding Faculty}"
+                                   TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                                   FontSize="16"
+                                   HorizontalOptions="Center"/>
+                            
+                            <Label Text="{Binding Major}"
+                                   TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                                   FontSize="16"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                        
+                        <!-- ข้อมูลการศึกษา -->
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                            <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center">
+                                <Label Text="ชั้นปีที่"
+                                       TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="{Binding YearDisplay}"
+                                       TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                            
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center">
+                                <Label Text="เกรดเฉลี่ย"
+                                       TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center"/>
+                                <Label Text="{Binding GpaDisplay}"
+                                       TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- เมนูการใช้งาน -->
+            <Label Text="เมนูการใช้งาน"
+                   FontSize="20"
+                   TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                   FontAttributes="Bold"
+                   Margin="0,10,0,5"/>
+
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,Auto"
+                  ColumnSpacing="15"
+                  RowSpacing="15">
+                
+                <!-- การลงทะเบียน -->
+                <Frame Grid.Row="0"
+                       Grid.Column="0"
+                       BorderColor="Transparent"
+                       CornerRadius="12"
+                       Padding="15"
+                       BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
+                       HasShadow="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToRegistrationCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="ลงทะเบียนเรียน"
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                        <Label Text="จัดการรายวิชา"
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                               FontSize="14"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- ถอนรายวิชา -->
+                <Frame Grid.Row="0"
+                       Grid.Column="1"
+                       BorderColor="Transparent"
+                       CornerRadius="12"
+                       Padding="15"
+                       BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Image Source="schedule.png"
+                               HeightRequest="40"
+                               WidthRequest="40"
+                               HorizontalOptions="Start"/>
+                        <Label Text="ถอนวิชาเรียน"
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                        <Label Text="จัดการถอนรายวิชา"
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                               FontSize="14"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- ผลการลงทะเบียน -->
+                <Frame Grid.Row="1"
+                       Grid.Column="0"
+                       BorderColor="Transparent"
+                       CornerRadius="12"
+                       Padding="15"
+                       BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Image Source="grades.png"
+                               HeightRequest="40"
+                               WidthRequest="40"
+                               HorizontalOptions="Start"/>
+                        <Label Text="ผลการลงทะเบียน"
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                        <Label Text="ตรวจสอบผลการลงทะเบียน"
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                               FontSize="14"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- ข้อมูลส่วนตัว -->
+                <Frame Grid.Row="1"
+                       Grid.Column="1"
+                       BorderColor="Transparent"
+                       CornerRadius="12"
+                       Padding="15"
+                       BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
+                       HasShadow="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="10">
+                        <Image Source="profile.png"
+                               HeightRequest="40"
+                               WidthRequest="40"
+                               HorizontalOptions="Start"/>
+                        <Label Text="ข้อมูลส่วนตัว"
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                               FontAttributes="Bold"
+                               FontSize="16"/>
+                        <Label Text="แก้ไขข้อมูล"
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
+                               FontSize="14"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+            
+            <!-- ปุ่มออกจากระบบ -->
+            <Button Text="ออกจากระบบ"
+                    Command="{Binding LogoutCommand}"
+                    BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="24"
+                    Margin="40,20,40,20"
+                    HeightRequest="48"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
