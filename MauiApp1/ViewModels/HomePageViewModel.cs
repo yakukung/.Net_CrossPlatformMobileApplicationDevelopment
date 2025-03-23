@@ -67,7 +67,6 @@ namespace MauiApp1.ViewModels
             LogoutCommand = new Command(async () => await LogoutAsync());
             NavigateToProfileCommand = new Command(async () => await NavigateToProfileAsync());
             NavigateToRegistrationCommand = new Command(async () => await NavigateToRegistrationCommandAsync());
-            LoadFullDataCommand = new Command(async () => await LoadFullDataAsync());
 
             LoadStudentDataAsync().ConfigureAwait(false);
         }
@@ -81,13 +80,12 @@ namespace MauiApp1.ViewModels
                 if (student != null)
                 {
                     CurrentStudent = student;
-
                     // ตรวจสอบข้อมูลที่โหลดมา
-                    System.Diagnostics.Debug.WriteLine($"Student loaded: {FullName}, Faculty: {Faculty}, Major: {Major}, Year: {YearDisplay}, GPA: {GpaDisplay}, Profile: {ProfileImage}");
+                    // System.Diagnostics.Debug.WriteLine($"Student loaded: {FullName}, Faculty: {Faculty}, Major: {Major}, Year: {YearDisplay}, GPA: {GpaDisplay}, Profile: {ProfileImage}");
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("No student data found. Redirecting to LoginPage.");
+                    // System.Diagnostics.Debug.WriteLine("No student data found. Redirecting to LoginPage.");
                     await Shell.Current.GoToAsync("//LoginPage");
                 }
             }
@@ -101,8 +99,7 @@ namespace MauiApp1.ViewModels
         {
             try
             {
-                _dataService.Logout();
-                System.Diagnostics.Debug.WriteLine("User logged out successfully.");
+                // System.Diagnostics.Debug.WriteLine("User logged out successfully.");
                 await Shell.Current.GoToAsync("//LoginPage");
             }
             catch (Exception ex)
@@ -121,25 +118,5 @@ namespace MauiApp1.ViewModels
 
         }
 
-        private async Task LoadFullDataAsync()
-        {
-            try
-            {
-                var fullData = await _dataService.GetStudentFullDataAsync(CurrentStudent.Id);
-                if (fullData != null)
-                {
-                    FullDataJson = System.Text.Json.JsonSerializer.Serialize(fullData, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
-                    System.Diagnostics.Debug.WriteLine($"Full Data:\n{FullDataJson}");
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("No full data found for the current student.");
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error loading full data: {ex.Message}");
-            }
-        }
     }
 }

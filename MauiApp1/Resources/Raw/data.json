@@ -1,25 +1,25 @@
 {
   "students": [
     {
-      "id": "6310001234",
+      "id": "65011212081",
       "email": "student1@example.com",
       "password": "1",
       "firstName": "ทันจิโร่",
       "lastName": "คามาโดะ",
-      "faculty": "วิศวกรรมศาสตร์",
-      "major": "วิศวกรรมคอมพิวเตอร์",
+      "faculty": "วิทยาการสารสนเทศ",
+      "major": "วิทยาการคอมพิวเตอร์",
       "year": 3,
       "gpa": 3.75,
       "profileImage": "student1.png"
     },
     {
-      "id": "6310005678",
+      "id": "66011212081",
       "email": "student2@example.com",
       "password": "2",
       "firstName": "เซนอิทสึ",
       "lastName": "อะกะสึมะ",
-      "faculty": "วิทยาศาสตร์",
-      "major": "วิทยาการคอมพิวเตอร์",
+      "faculty": "วิศวกรรมศาสตร์",
+      "major": "วิศวกรรมไฟฟ้า",
       "year": 2,
       "gpa": 3.89,
       "profileImage": "student2.png"
@@ -37,74 +37,10 @@
       "maxStudents": 40,
       "currentStudents": 35,
       "faculty": "วิศวกรรมศาสตร์",
-      "term": "1/2566",
+      "term": "1/2567",
       "prerequisites": [],
       "description": "ศึกษาหลักการเขียนโปรแกรมคอมพิวเตอร์ แนวคิดการเขียนโปรแกรมเชิงวัตถุ และการเขียนโปรแกรมภาษา Python",
-      "status": "open"
-    },
-    {
-      "courseId": "2110200",
-      "name": "โครงสร้างข้อมูล",
-      "credit": 3,
-      "section": 1,
-      "instructor": "ดร.วิชัย สุขสมบูรณ์",
-      "schedule": "อังคาร 13:00-16:00",
-      "room": "ENG3-301",
-      "maxStudents": 35,
-      "currentStudents": 30,
-      "faculty": "วิศวกรรมศาสตร์",
-      "term": "1/2566",
-      "prerequisites": ["2110101"],
-      "description": "ศึกษาโครงสร้างข้อมูลพื้นฐาน อาร์เรย์ ลิงค์ลิสต์ สแตค คิว ทรี กราฟ และอัลกอริทึมที่เกี่ยวข้อง",
-      "status": "open"
-    },
-    {
-      "courseId": "2110215",
-      "name": "วิศวกรรมซอฟต์แวร์",
-      "credit": 3,
-      "section": 1,
-      "instructor": "ดร.นภา วงศ์ไทย",
-      "schedule": "พุธ 9:00-12:00",
-      "room": "ENG3-401",
-      "maxStudents": 30,
-      "currentStudents": 25,
-      "faculty": "วิศวกรรมศาสตร์",
-      "term": "1/2566",
-      "prerequisites": ["2110101"],
-      "description": "หลักการวิศวกรรมซอฟต์แวร์ กระบวนการพัฒนาซอฟต์แวร์ การวิเคราะห์ความต้องการ การออกแบบซอฟต์แวร์ การทดสอบซอฟต์แวร์",
-      "status": "open"
-    },
-    {
-      "courseId": "2110332",
-      "name": "การวิเคราะห์และออกแบบอัลกอริทึม",
-      "credit": 3,
-      "section": 1,
-      "instructor": "ดร.ประภาส สุวรรณเพชร",
-      "schedule": "พฤหัสบดี 13:00-16:00",
-      "room": "ENG3-501",
-      "maxStudents": 30,
-      "currentStudents": 28,
-      "faculty": "วิศวกรรมศาสตร์",
-      "term": "1/2566",
-      "prerequisites": ["2110200"],
-      "description": "การวิเคราะห์ประสิทธิภาพของอัลกอริทึม การออกแบบอัลกอริทึมด้วยเทคนิคต่างๆ เช่น divide and conquer, greedy, dynamic programming",
-      "status": "open"
-    },
-    {
-      "courseId": "2110422",
-      "name": "เทคโนโลยีเว็บและเว็บเซอร์วิส",
-      "credit": 3,
-      "section": 1,
-      "instructor": "ดร.สุรีย์ พงศ์อารักษ์",
-      "schedule": "ศุกร์ 9:00-12:00",
-      "room": "ENG3-201",
-      "maxStudents": 35,
-      "currentStudents": 20,
-      "faculty": "วิศวกรรมศาสตร์",
-      "term": "1/2566",
-      "prerequisites": ["2110215"],
-      "description": "เทคโนโลยีเว็บสมัยใหม่ การพัฒนาเว็บแอปพลิเคชัน เว็บเซอร์วิส RESTful API และการพัฒนาแอปพลิเคชันแบบ Single Page",
-      "status": "open"
+      "status": "closed"
     },
     {
       "courseId": "2110150",
@@ -117,9 +53,106 @@
       "maxStudents": 40,
       "currentStudents": 38,
       "faculty": "วิศวกรรมศาสตร์",
-      "term": "2/2565",
+      "term": "1/2567",
       "prerequisites": [],
       "description": "พื้นฐานของวงจรดิจิทัล เกต逻辑 การออกแบบวงจรคอมบิเนชันและซีเควนเชียล",
+      "status": "closed"
+    },
+    {
+      "courseId": "2120101",
+      "name": "แคลคูลัส 1",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ศุภชัย ทองคำ",
+      "schedule": "อังคาร 9:00-12:00",
+      "room": "SCI-101",
+      "maxStudents": 50,
+      "currentStudents": 45,
+      "faculty": "วิทยาศาสตร์",
+      "term": "1/2567",
+      "prerequisites": [],
+      "description": "พื้นฐานแคลคูลัส ลิมิต อนุพันธ์ และการประยุกต์ใช้",
+      "status": "closed"
+    },
+    {
+      "courseId": "2140101",
+      "name": "ภาษาอังกฤษเพื่อการสื่อสาร",
+      "credit": 3,
+      "section": 1,
+      "instructor": "อาจารย์ อลิซาเบธ จอห์นสัน",
+      "schedule": "ศุกร์ 9:00-12:00",
+      "room": "ARTS-101",
+      "maxStudents": 30,
+      "currentStudents": 25,
+      "faculty": "ศิลปศาสตร์",
+      "term": "1/2567",
+      "prerequisites": [],
+      "description": "พัฒนาทักษะการฟัง พูด อ่าน เขียน ภาษาอังกฤษในบริบททั่วไป",
+      "status": "closed"
+    },
+    {
+      "courseId": "2150100",
+      "name": "ชีววิทยาพื้นฐาน",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ปิยวรรณ สุขสวัสดิ์",
+      "schedule": "อังคาร 13:00-16:00",
+      "room": "SCI-301",
+      "maxStudents": 40,
+      "currentStudents": 36,
+      "faculty": "วิทยาศาสตร์",
+      "term": "1/2567",
+      "prerequisites": [],
+      "description": "โครงสร้างเซลล์ กระบวนการเผาผลาญ และพันธุศาสตร์เบื้องต้น",
+      "status": "closed"
+    },
+    {
+      "courseId": "2110160",
+      "name": "ไฟฟ้าและอิเล็กทรอนิกส์พื้นฐาน",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.สมชาย วงศ์วิไล",
+      "schedule": "พุธ 9:00-12:00",
+      "room": "ENG3-303",
+      "maxStudents": 40,
+      "currentStudents": 37,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "1/2567",
+      "prerequisites": [],
+      "description": "พื้นฐานไฟฟ้าและอิเล็กทรอนิกส์ วงจรไฟฟ้า อุปกรณ์อิเล็กทรอนิกส์ และการวิเคราะห์",
+      "status": "closed"
+    },
+    {
+      "courseId": "2190100",
+      "name": "เศรษฐศาสตร์เบื้องต้น",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.วรวิทย์ สุขสมบูรณ์",
+      "schedule": "พฤหัสบดี 13:00-16:00",
+      "room": "ECON-101",
+      "maxStudents": 50,
+      "currentStudents": 48,
+      "faculty": "เศรษฐศาสตร์",
+      "term": "1/2567",
+      "prerequisites": [],
+      "description": "แนวคิดพื้นฐานของเศรษฐศาสตร์ อุปสงค์ อุปทาน และตลาด",
+      "status": "closed"
+    },
+
+    {
+      "courseId": "2110200",
+      "name": "โครงสร้างข้อมูล",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.วิชัย สุขสมบูรณ์",
+      "schedule": "อังคาร 13:00-16:00",
+      "room": "ENG3-301",
+      "maxStudents": 35,
+      "currentStudents": 30,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "2/2567",
+      "prerequisites": ["2110101"],
+      "description": "ศึกษาโครงสร้างข้อมูลพื้นฐาน อาร์เรย์ ลิงค์ลิสต์ สแตค คิว ทรี กราฟ และอัลกอริทึมที่เกี่ยวข้อง",
       "status": "closed"
     },
     {
@@ -133,10 +166,123 @@
       "maxStudents": 35,
       "currentStudents": 32,
       "faculty": "วิศวกรรมศาสตร์",
-      "term": "2/2565",
+      "term": "2/2567",
       "prerequisites": ["2110200"],
       "description": "แนวคิดและการออกแบบฐานข้อมูลเชิงสัมพันธ์ SQL และการจัดการฐานข้อมูล",
       "status": "closed"
+    },
+    {
+      "courseId": "2110215",
+      "name": "วิศวกรรมซอฟต์แวร์",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.นภา วงศ์ไทย",
+      "schedule": "พุธ 9:00-12:00",
+      "room": "ENG3-401",
+      "maxStudents": 30,
+      "currentStudents": 25,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "2/2567",
+      "prerequisites": ["2110101"],
+      "description": "หลักการวิศวกรรมซอฟต์แวร์ กระบวนการพัฒนาซอฟต์แวร์ การวิเคราะห์ความต้องการ การออกแบบซอฟต์แวร์ การทดสอบซอฟต์แวร์",
+      "status": "closed"
+    },
+    {
+      "courseId": "2120200",
+      "name": "ฟิสิกส์พื้นฐาน",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.กิตติศักดิ์ พิมล",
+      "schedule": "พฤหัสบดี 13:00-16:00",
+      "room": "SCI-201",
+      "maxStudents": 40,
+      "currentStudents": 38,
+      "faculty": "วิทยาศาสตร์",
+      "term": "2/2567",
+      "prerequisites": [],
+      "description": "กลศาสตร์คลาสสิก กฎของนิวตัน การเคลื่อนที่ และพลังงาน",
+      "status": "closed"
+    },
+    {
+      "courseId": "2150200",
+      "name": "เคมีอินทรีย์",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.วรางคณา พิมลศรี",
+      "schedule": "พุธ 13:00-16:00",
+      "room": "SCI-401",
+      "maxStudents": 35,
+      "currentStudents": 32,
+      "faculty": "วิทยาศาสตร์",
+      "term": "2/2567",
+      "prerequisites": [],
+      "description": "โครงสร้างและปฏิกิริยาของสารประกอบอินทรีย์ การสังเคราะห์และการวิเคราะห์",
+      "status": "closed"
+    },
+    {
+      "courseId": "2110260",
+      "name": "วงจรไฟฟ้า",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.สมบัติ พงษ์ศรี",
+      "schedule": "จันทร์ 13:00-16:00",
+      "room": "ENG3-304",
+      "maxStudents": 35,
+      "currentStudents": 33,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "2/2567",
+      "prerequisites": ["2110160"],
+      "description": "การวิเคราะห์วงจรไฟฟ้า กฎของเคอร์ชอฟฟ์ และการคำนวณกระแสไฟฟ้า",
+      "status": "closed"
+    },
+    {
+      "courseId": "2130200",
+      "name": "การจัดการองค์กร",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ธนภัทร จันทร์สุข",
+      "schedule": "ศุกร์ 9:00-12:00",
+      "room": "BUS-401",
+      "maxStudents": 40,
+      "currentStudents": 35,
+      "faculty": "บริหารธุรกิจ",
+      "term": "2/2567",
+      "prerequisites": [],
+      "description": "ทฤษฎีการจัดการ การวางแผน การตัดสินใจ และการควบคุมในองค์กร",
+      "status": "closed"
+    },
+
+    {
+      "courseId": "2110332",
+      "name": "การวิเคราะห์และออกแบบอัลกอริทึม",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ประภาส สุวรรณเพชร",
+      "schedule": "พฤหัสบดี 13:00-16:00",
+      "room": "ENG3-501",
+      "maxStudents": 30,
+      "currentStudents": 15,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": ["2110200"],
+      "description": "การวิเคราะห์ประสิทธิภาพของอัลกอริทึม การออกแบบอัลกอริทึมด้วยเทคนิคต่างๆ เช่น divide and conquer, greedy, dynamic programming",
+      "status": "open"
+    },
+    {
+      "courseId": "2110422",
+      "name": "เทคโนโลยีเว็บและเว็บเซอร์วิส",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.สุรีย์ พงศ์อารักษ์",
+      "schedule": "ศุกร์ 9:00-12:00",
+      "room": "ENG3-201",
+      "maxStudents": 35,
+      "currentStudents": 10,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": ["2110215"],
+      "description": "เทคโนโลยีเว็บสมัยใหม่ การพัฒนาเว็บแอปพลิเคชัน เว็บเซอร์วิส RESTful API และการพัฒนาแอปพลิเคชันแบบ Single Page",
+      "status": "open"
     },
     {
       "courseId": "2110301",
@@ -147,185 +293,418 @@
       "schedule": "พุธ 13:00-16:00",
       "room": "ENG3-502",
       "maxStudents": 30,
-      "currentStudents": 25,
+      "currentStudents": 12,
       "faculty": "วิศวกรรมศาสตร์",
-      "term": "1/2566",
+      "term": "3/2567",
       "prerequisites": ["2110332"],
       "description": "หลักการพื้นฐานของปัญญาประดิษฐ์ การค้นหา การเรียนรู้ของเครื่อง และการประยุกต์ใช้",
+      "status": "open"
+    },
+    {
+      "courseId": "2110350",
+      "name": "การเรียนรู้ของเครื่อง",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.พิมพ์ลภัส ศรีสวัสดิ์",
+      "schedule": "ศุกร์ 13:00-16:00",
+      "room": "ENG3-303",
+      "maxStudents": 30,
+      "currentStudents": 8,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": ["2110301"],
+      "description": "แนวคิดพื้นฐานของการเรียนรู้ของเครื่อง การจำแนกประเภท การถดถอย และการประเมินโมเดล",
+      "status": "open"
+    },
+    {
+      "courseId": "2110550",
+      "name": "ระบบปฏิบัติการ",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.วรวิทย์ พงษ์ศรี",
+      "schedule": "พุธ 9:00-12:00",
+      "room": "ENG3-304",
+      "maxStudents": 35,
+      "currentStudents": 15,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": ["2110200"],
+      "description": "โครงสร้างและการทำงานของระบบปฏิบัติการ การจัดการหน่วยความจำ การจัดตารางงาน และการสื่อสารระหว่างกระบวนการ",
+      "status": "open"
+    },
+    {
+      "courseId": "2110270",
+      "name": "ระบบควบคุมอัตโนมัติ",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.นพดล ศรีสุข",
+      "schedule": "จันทร์ 9:00-12:00",
+      "room": "ENG3-305",
+      "maxStudents": 30,
+      "currentStudents": 10,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": ["2110260"],
+      "description": "พื้นฐานระบบควบคุม การวิเคราะห์และออกแบบระบบควบคุมอัตโนมัติ",
+      "status": "open"
+    },
+    {
+      "courseId": "2110400",
+      "name": "ความมั่นคงปลอดภัยไซเบอร์",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.วรวิทย์ พงษ์ศรี",
+      "schedule": "จันทร์ 9:00-12:00",
+      "room": "ENG3-201",
+      "maxStudents": 35,
+      "currentStudents": 10,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "พื้นฐานความปลอดภัยในระบบคอมพิวเตอร์ การเข้ารหัส และการป้องกันภัยคุกคาม",
+      "status": "open"
+    },
+    {
+      "courseId": "2110410",
+      "name": "การพัฒนาเกมเบื้องต้น",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.พิชญ์สินี ศรีสุข",
+      "schedule": "จันทร์ 13:00-16:00",
+      "room": "ENG3-301",
+      "maxStudents": 30,
+      "currentStudents": 8,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "หลักการพัฒนาเกม 2D และ 3D การใช้เครื่องมือพัฒนาเกมสมัยใหม่",
+      "status": "open"
+    },
+    {
+      "courseId": "2110420",
+      "name": "พื้นฐานการประมวลผลสัญญาณ",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.สมชาย วงศ์วิไล",
+      "schedule": "อังคาร 9:00-12:00",
+      "room": "ENG3-302",
+      "maxStudents": 30,
+      "currentStudents": 12,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "การประมวลผลสัญญาณดิจิทัล การแปลงสัญญาณ และการวิเคราะห์",
+      "status": "open"
+    },
+    {
+      "courseId": "2110430",
+      "name": "การเขียนโปรแกรมเชิงกราฟิก",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.นภา วงศ์ไทย",
+      "schedule": "อังคาร 13:00-16:00",
+      "room": "ENG3-401",
+      "maxStudents": 25,
+      "currentStudents": 10,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "การเขียนโปรแกรมสำหรับกราฟิก 2D และ 3D ด้วย OpenGL",
+      "status": "open"
+    },
+    {
+      "courseId": "2110440",
+      "name": "พื้นฐานระบบฝังตัว",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ชัยวัฒน์ ศรีสุข",
+      "schedule": "พุธ 9:00-12:00",
+      "room": "ENG3-303",
+      "maxStudents": 30,
+      "currentStudents": 15,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "หลักการทำงานของระบบฝังตัว ไมโครคอนโทรลเลอร์ และการเขียนโปรแกรม",
+      "status": "open"
+    },
+    {
+      "courseId": "2110450",
+      "name": "การออกแบบระบบดิจิทัล",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.สมบัติ พงษ์ศรี",
+      "schedule": "พุธ 13:00-16:00",
+      "room": "ENG3-304",
+      "maxStudents": 35,
+      "currentStudents": 12,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "การออกแบบระบบดิจิทัลด้วย FPGA และภาษา VHDL",
+      "status": "open"
+    },
+    {
+      "courseId": "2110460",
+      "name": "พื้นฐานพลังงานทดแทน",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.นพดล ศรีสุข",
+      "schedule": "พฤหัสบดี 9:00-12:00",
+      "room": "ENG3-305",
+      "maxStudents": 30,
+      "currentStudents": 10,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "หลักการพลังงานทดแทน พลังงานแสงอาทิตย์ ลม และน้ำ",
+      "status": "open"
+    },
+    {
+      "courseId": "2110470",
+      "name": "การวิเคราะห์ข้อมูลเบื้องต้น",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.กานต์พิชชา พัฒนะ",
+      "schedule": "พฤหัสบดี 13:00-16:00",
+      "room": "ENG3-402",
+      "maxStudents": 35,
+      "currentStudents": 8,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "พื้นฐานการวิเคราะห์ข้อมูลด้วยสถิติและเครื่องมือสมัยใหม่",
+      "status": "open"
+    },
+    {
+      "courseId": "2110480",
+      "name": "พื้นฐานอินเทอร์เน็ตของสรรพสิ่ง",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ธีรภัทร วงศ์วรางค์",
+      "schedule": "ศุกร์ 9:00-12:00",
+      "room": "ENG3-501",
+      "maxStudents": 30,
+      "currentStudents": 10,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "หลักการของ IoT การเชื่อมต่ออุปกรณ์ และการประยุกต์ใช้",
+      "status": "open"
+    },
+    {
+      "courseId": "2110490",
+      "name": "การจัดการโครงการเทคโนโลยี",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.พิมพ์ลภัส ศรีสวัสดิ์",
+      "schedule": "ศุกร์ 13:00-16:00",
+      "room": "ENG3-502",
+      "maxStudents": 25,
+      "currentStudents": 8,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "3/2567",
+      "prerequisites": [],
+      "description": "หลักการจัดการโครงการด้านเทคโนโลยี การวางแผน และการบริหารความเสี่ยง",
       "status": "open"
     }
   ],
   "registrations": {
-    "6310001234": {
+    "65011212081": {
       "current": [
         {
-          "courseId": "2110200",
-          "term": "1/2566",
-          "registrationDate": "2023-06-15T10:30:00",
-          "status": "registered"
-        },
-        {
-          "courseId": "2110215",
-          "term": "1/2566",
-          "registrationDate": "2023-06-15T10:35:00",
-          "status": "registered"
-        },
-        {
-          "courseId": "2110301",
-          "term": "1/2566",
-          "registrationDate": "2023-06-16T09:10:00",
+          "courseId": "2110332",
+          "term": "3/2567",
+          "registrationDate": "2025-03-05T09:00:00",
           "status": "registered"
         },
         {
           "courseId": "2110422",
-          "term": "1/2566",
-          "registrationDate": "2023-06-16T09:15:00",
-          "status": "withdrawn",
-          "withdrawDate": "2023-08-25T14:30:00"
+          "term": "3/2567",
+          "registrationDate": "2025-03-05T09:05:00",
+          "status": "registered"
+        },
+        {
+          "courseId": "2110550",
+          "term": "3/2567",
+          "registrationDate": "2025-03-05T09:10:00",
+          "status": "registered"
         }
       ],
       "previous": [
         {
           "courseId": "2110101",
-          "term": "1/2565",
-          "grade": "B+",
-          "registrationDate": "2022-07-15T09:00:00",
+          "term": "1/2567",
+          "grade": "A",
+          "registrationDate": "2024-05-15T10:00:00",
           "status": "completed"
         },
         {
-          "courseId": "2110150",
-          "term": "2/2565",
+          "courseId": "2120101",
+          "term": "1/2567",
+          "grade": "B+",
+          "registrationDate": "2024-05-15T10:05:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2140101",
+          "term": "1/2567",
           "grade": "A",
-          "registrationDate": "2022-10-20T10:00:00",
+          "registrationDate": "2024-05-15T10:10:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110200",
+          "term": "2/2567",
+          "grade": "A",
+          "registrationDate": "2024-10-15T09:00:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110215",
+          "term": "2/2567",
+          "grade": "B+",
+          "registrationDate": "2024-10-15T09:05:00",
           "status": "completed"
         },
         {
           "courseId": "2110250",
-          "term": "2/2565",
+          "term": "2/2567",
           "grade": "B",
-          "registrationDate": "2022-10-20T10:05:00",
+          "registrationDate": "2024-10-15T09:10:00",
           "status": "completed"
         },
         {
-          "courseId": "2110332",
-          "term": "2/2565",
-          "grade": "B+",
-          "registrationDate": "2022-10-20T10:10:00",
-          "status": "completed"
+          "courseId": "2130200",
+          "term": "2/2567",
+          "registrationDate": "2024-10-15T09:15:00",
+          "status": "withdrawn",
+          "withdrawDate": "2025-01-20T14:00:00"
         }
       ]
     },
-    "6310005678": {
+    "66011212081": {
       "current": [
         {
-          "courseId": "2110101",
-          "term": "1/2566",
-          "registrationDate": "2023-06-14T11:20:00",
-          "status": "registered"
-        },
-        {
-          "courseId": "2110200",
-          "term": "1/2566",
-          "registrationDate": "2023-06-14T11:25:00",
-          "status": "registered"
-        },
-        {
           "courseId": "2110332",
-          "term": "1/2566",
-          "registrationDate": "2023-06-14T11:30:00",
-          "status": "withdrawn",
-          "withdrawDate": "2023-08-20T13:45:00"
+          "term": "3/2567",
+          "registrationDate": "2025-03-06T10:00:00",
+          "status": "registered"
+        },
+        {
+          "courseId": "2110260",
+          "term": "3/2567",
+          "registrationDate": "2025-03-06T10:05:00",
+          "status": "registered"
+        },
+        {
+          "courseId": "2110270",
+          "term": "3/2567",
+          "registrationDate": "2025-03-06T10:10:00",
+          "status": "registered"
         }
       ],
       "previous": [
         {
           "courseId": "2110101",
-          "term": "1/2565",
+          "term": "1/2567",
           "grade": "A",
-          "registrationDate": "2022-07-15T09:15:00",
+          "registrationDate": "2024-05-16T11:00:00",
           "status": "completed"
         },
         {
           "courseId": "2110150",
-          "term": "2/2565",
+          "term": "1/2567",
+          "grade": "A",
+          "registrationDate": "2024-05-16T11:05:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110160",
+          "term": "1/2567",
           "grade": "B+",
-          "registrationDate": "2022-10-20T11:00:00",
+          "registrationDate": "2024-05-16T11:10:00",
           "status": "completed"
         },
         {
           "courseId": "2110200",
-          "term": "2/2565",
+          "term": "2/2567",
           "grade": "A",
-          "registrationDate": "2022-10-20T11:05:00",
+          "registrationDate": "2024-10-16T10:00:00",
           "status": "completed"
+        },
+        {
+          "courseId": "2120200",
+          "term": "2/2567",
+          "grade": "A",
+          "registrationDate": "2024-10-16T10:05:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110260",
+          "term": "2/2567",
+          "grade": "A",
+          "registrationDate": "2024-10-16T10:10:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2150200",
+          "term": "2/2567",
+          "registrationDate": "2024-10-16T10:15:00",
+          "status": "withdrawn",
+          "withdrawDate": "2025-01-25T15:00:00"
         }
       ]
     }
   },
   "terms": [
     {
-      "id": "1/2566",
-      "name": "ภาคต้น ปีการศึกษา 2566",
+      "id": "1/2567",
+      "name": "ภาคต้น ปีการศึกษา 2567",
+      "isCurrent": false,
+      "startDate": "2024-06-15",
+      "endDate": "2024-10-15",
+      "registrationPeriod": {
+        "start": "2024-05-10",
+        "end": "2024-05-20"
+      },
+      "addDropPeriod": {
+        "start": "2024-06-15",
+        "end": "2024-06-30"
+      },
+      "withdrawDeadline": "2024-08-31"
+    },
+    {
+      "id": "2/2567",
+      "name": "ภาคปลาย ปีการศึกษา 2567",
+      "isCurrent": false,
+      "startDate": "2024-11-15",
+      "endDate": "2025-03-15",
+      "registrationPeriod": {
+        "start": "2024-10-10",
+        "end": "2024-10-20"
+      },
+      "addDropPeriod": {
+        "start": "2024-11-15",
+        "end": "2024-11-30"
+      },
+      "withdrawDeadline": "2025-01-31"
+    },
+    {
+      "id": "3/2567",
+      "name": "ภาคฤดูร้อน ปีการศึกษา 2567",
       "isCurrent": true,
-      "startDate": "2023-08-15",
-      "endDate": "2023-12-15",
+      "startDate": "2025-04-01",
+      "endDate": "2025-06-01",
       "registrationPeriod": {
-        "start": "2023-06-10",
-        "end": "2023-06-20"
+        "start": "2025-03-01",
+        "end": "2025-03-10"
       },
       "addDropPeriod": {
-        "start": "2023-08-15",
-        "end": "2023-08-30"
+        "start": "2025-04-01",
+        "end": "2025-04-15"
       },
-      "withdrawDeadline": "2023-10-30"
-    },
-    {
-      "id": "3/2565",
-      "name": "ภาคฤดูร้อน ปีการศึกษา 2565",
-      "isCurrent": false,
-      "startDate": "2023-04-01",
-      "endDate": "2023-06-01",
-      "registrationPeriod": {
-        "start": "2023-03-01",
-        "end": "2023-03-10"
-      },
-      "addDropPeriod": {
-        "start": "2023-04-01",
-        "end": "2023-04-15"
-      },
-      "withdrawDeadline": "2023-05-15"
-    },
-    {
-      "id": "2/2565",
-      "name": "ภาคปลาย ปีการศึกษา 2565",
-      "isCurrent": false,
-      "startDate": "2022-11-15",
-      "endDate": "2023-03-15",
-      "registrationPeriod": {
-        "start": "2022-10-15",
-        "end": "2022-10-25"
-      },
-      "addDropPeriod": {
-        "start": "2022-11-15",
-        "end": "2022-11-30"
-      },
-      "withdrawDeadline": "2023-01-31"
-    },
-    {
-      "id": "1/2565",
-      "name": "ภาคต้น ปีการศึกษา 2565",
-      "isCurrent": false,
-      "startDate": "2022-08-15",
-      "endDate": "2022-12-15",
-      "registrationPeriod": {
-        "start": "2022-07-10",
-        "end": "2022-07-20"
-      },
-      "addDropPeriod": {
-        "start": "2022-08-15",
-        "end": "2022-08-30"
-      },
-      "withdrawDeadline": "2022-10-30"
+      "withdrawDeadline": "2025-05-15"
     }
   ],
   "registrationStatus": [

@@ -2,13 +2,14 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 using MauiApp1.Models;
 using MauiApp1.Services;
 using Microsoft.Maui.Controls;
 
 namespace MauiApp1.ViewModels
 {
-    public class ProfilePageViewModel : BindableObject
+    public partial class ProfilePageViewModel : BindableObject
     {
         private readonly DataService _dataService;
         private Student? _student;
@@ -17,10 +18,7 @@ namespace MauiApp1.ViewModels
         {
             _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));
             LoadStudentDataCommand = new Command(async () => await LoadStudentDataAsync());
-            goBackCommand = new Command(async () => await GoBackCommandAsync());
             CurrentCourses = new ObservableCollection<Course>();
-
-            System.Diagnostics.Debug.WriteLine("ProfilePageViewModel initialized.");
 
             Task.Run(async () => await LoadStudentDataAsync());
         }
@@ -56,12 +54,12 @@ namespace MauiApp1.ViewModels
         public ObservableCollection<Course> CurrentCourses { get; }
 
         public ICommand LoadStudentDataCommand { get; }
-        public ICommand goBackCommand { get; }
 
-        private async Task LoadStudentDataAsync()
+        public async Task LoadStudentDataAsync()
         {
             try
             {
+                // โหลดข้อมูลนักศึกษา
                 var student = await _dataService.LoadCurrentStudentAsync();
                 if (student == null)
                 {
@@ -71,6 +69,7 @@ namespace MauiApp1.ViewModels
 
                 CurrentStudent = student;
 
+                // โหลดรายวิชาที่ลงทะเบียน
                 var currentCourses = await _dataService.GetStudentCoursesAsync(student.Id);
                 CurrentCourses.Clear();
                 foreach (var course in currentCourses)
@@ -78,18 +77,26 @@ namespace MauiApp1.ViewModels
                     CurrentCourses.Add(course);
                 }
 
-                // System.Diagnostics.Debug.WriteLine($"Profile loaded: {FullName}, Faculty: {Faculty}, Major: {Major}, Year: {YearDisplay}, GPA: {GpaDisplay}, Profile: {ProfileImage}");
-                // System.Diagnostics.Debug.WriteLine("Profile loaded successfully.");
+                // แสดงข้อมูลใน Debug Logs
+                System.Diagnostics.Debug.WriteLine($"Student ID: {CurrentStudent.Id}");
+                System.Diagnostics.Debug.WriteLine($"Student Name: {CurrentStudent.FirstName} {CurrentStudent.LastName}");
+                System.Diagnostics.Debug.WriteLine("Registered Courses:");
+                foreach (var course in CurrentCourses)
+                {
+                    System.Diagnostics.Debug.WriteLine($"- {course.CourseId}: {course.Name}");
+                }
+
+                System.Diagnostics.Debug.WriteLine("Profile data loaded successfully.");
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error loading student data: {ex.Message}");
             }
         }
-
-        private async Task GoBackCommandAsync()
+        
+        [RelayCommand]
+        private async Task GoBackAsync()
         {
-            System.Diagnostics.Debug.WriteLine("Navigating back to HomePage.");
             await Shell.Current.GoToAsync("//HomePage");
         }
     }

@@ -12,8 +12,10 @@ namespace MauiApp1.Services
     public class DataService
     {
         private const string DataFilePath = "data.json";
+        private readonly string WritableDataFilePath = Path.Combine(FileSystem.AppDataDirectory, DataFilePath);
         private DataModel? _data;
         public Student? CurrentStudent { get; private set; }
+        public List<Course> CurrentCourses { get; private set; } = new List<Course>();
 
         private class DataModel
         {
@@ -65,7 +67,7 @@ namespace MauiApp1.Services
             }
 
             // ตรวจสอบว่าข้อมูลนักศึกษาครบถ้วนหรือไม่
-            System.Diagnostics.Debug.WriteLine($"Loaded student: {student.FirstName} {student.LastName}, Faculty: {student.Faculty}, Major: {student.Major}");
+            // System.Diagnostics.Debug.WriteLine($"Loaded student: {student.FirstName} {student.LastName}, Faculty: {student.Faculty}, Major: {student.Major}");
             return student;
         }
 
@@ -105,6 +107,8 @@ namespace MauiApp1.Services
                 .Where(c => c != null)
                 .ToList();
 
+            System.Diagnostics.Debug.WriteLine($"ข้อมูลลงทะเบียนปัจจุบัน Student ID: {studentId}, Courses: {string.Join(", ", currentCourses.Select(c => c.Name))}");
+
             return (currentCourses, previousCourses);
         }
 
@@ -136,42 +140,36 @@ namespace MauiApp1.Services
 
             try
             {
-                System.Diagnostics.Debug.WriteLine($"Attempting to load file: {DataFilePath}");
+                System.Diagnostics.Debug.WriteLine($"Checking writable file at: {WritableDataFilePath}");
 
-                // ตรวจสอบว่าไฟล์มีอยู่ในแพ็กเกจหรือไม่
-                var fileExists = await FileSystem.AppPackageFileExistsAsync(DataFilePath);
-                System.Diagnostics.Debug.WriteLine($"File exists in app package: {fileExists}");
-
-                if (!fileExists)
+                if (File.Exists(WritableDataFilePath))
                 {
-                    System.Diagnostics.Debug.WriteLine("File not found in app package");
-                    return new DataModel();
+                    System.Diagnostics.Debug.WriteLine("Found existing file in writable directory");
+                    var json = await File.ReadAllTextAsync(WritableDataFilePath);
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    _data = JsonSerializer.Deserialize<DataModel>(json, options);
+
+                    if (_data != null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Successfully loaded {_data.Students.Count} students and {_data.Courses.Count} courses from writable file.");
+                        return _data;
+                    }
                 }
 
-                // เปิดไฟล์ JSON
-                using var stream = await FileSystem.OpenAppPackageFileAsync(DataFilePath);
-                if (stream == null)
-                {
-                    System.Diagnostics.Debug.WriteLine("Stream is null - file not accessible");
-                    return new DataModel();
-                }
-
-                // อ่านเนื้อหา JSON
-                using var reader = new StreamReader(stream);
-                var json = await reader.ReadToEndAsync();
-                System.Diagnostics.Debug.WriteLine($"JSON loaded: {json.Substring(0, Math.Min(json.Length, 100))}...");
-
-                // แปลง JSON เป็นออบเจ็กต์
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                _data = JsonSerializer.Deserialize<DataModel>(json, options);
+                System.Diagnostics.Debug.WriteLine("Writable file not found or failed to load. Falling back to app package.");
+                using var packageStream = await FileSystem.OpenAppPackageFileAsync(DataFilePath);
+                using var reader = new StreamReader(packageStream);
+                var packageJson = await reader.ReadToEndAsync();
+                var packageOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                _data = JsonSerializer.Deserialize<DataModel>(packageJson, packageOptions);
 
                 if (_data == null)
                 {
-                    System.Diagnostics.Debug.WriteLine("Deserialized data is null");
+                    System.Diagnostics.Debug.WriteLine("Deserialized data from app package is null");
                     return new DataModel();
                 }
 
-                System.Diagnostics.Debug.WriteLine($"Successfully loaded {_data.Students.Count} students and {_data.Courses.Count} courses.");
+                System.Diagnostics.Debug.WriteLine($"Successfully loaded {_data.Students.Count} students and {_data.Courses.Count} courses from app package.");
                 return _data;
             }
             catch (Exception ex)
@@ -225,6 +223,53 @@ namespace MauiApp1.Services
             {
                 System.Diagnostics.Debug.WriteLine($"Error retrieving full student data: {ex.Message}");
                 return null;
+            }
+        }
+        public void RefreshData()
+        {
+            _data = null; // รีเซ็ตข้อมูลในหน่วยความจำ
+            System.Diagnostics.Debug.WriteLine("DataService: Data has been reset. It will be reloaded on the next request.");
+        }
+
+        public async Task RefreshDataAsync()
+        {
+            if (_data == null)
+            {
+                System.Diagnostics.Debug.WriteLine("DataService: Data is null. Reloading data...");
+                await GetDataAsync();
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("DataService: Data is already loaded. Skipping reload.");
+            }
+        }
+
+        public async Task LoadStudentDataAsync()
+        {
+            try
+            {
+                var dataService = new DataService();
+                var student = await dataService.LoadCurrentStudentAsync();
+                if (student == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("No student data found.");
+                    return;
+                }
+
+                CurrentStudent = student;
+
+                var (currentCourses, previousCourses) = await dataService.GetStudentRegistrationsAsync(student.Id);
+                CurrentCourses.Clear();
+                foreach (var course in currentCourses)
+                {
+                    CurrentCourses.Add(course);
+                }
+
+                System.Diagnostics.Debug.WriteLine($"Profile Loaded courses for student {student.Id}: {string.Join(", ", CurrentCourses.Select(c => c.Name))}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading student data: {ex.Message}");
             }
         }
     }

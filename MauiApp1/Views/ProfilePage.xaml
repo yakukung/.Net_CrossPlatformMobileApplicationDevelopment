@@ -18,7 +18,7 @@
                             <!-- Back Button -->
                             <Button Grid.Row="0"
                                     Text="ย้อนกลับ"
-                                    Command="{Binding goBackCommand}"
+                                    Command="{Binding GoBackCommand}"
                                     BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"
                                     TextColor="White"
                                     FontSize="16"
@@ -132,7 +132,6 @@
                                    FontAttributes="Bold"
                                    TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"
                                    Margin="0,0,0,8"/>
-
                             <CollectionView ItemsSource="{Binding CurrentCourses}"
                                             EmptyView="ไม่มีรายวิชาที่ลงทะเบียน">
                                    <CollectionView.ItemTemplate>

@@ -13,13 +13,6 @@
                        FontAttributes="Bold"
                        TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
                        VerticalOptions="Center"/>
-                
-                <Image Grid.Column="1"
-                       Source="settings.png"
-                       HeightRequest="24"
-                       WidthRequest="24"
-                       HorizontalOptions="End"
-                       VerticalOptions="Center"/>
             </Grid>
 
             <!-- โปรไฟล์ -->

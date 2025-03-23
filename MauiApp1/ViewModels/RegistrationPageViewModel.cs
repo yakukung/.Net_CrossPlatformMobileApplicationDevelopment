@@ -1,122 +1,99 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text.Json;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Linq;
-using System.IO;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MauiApp1.Models;
 using MauiApp1.Services;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Storage;
 
 namespace MauiApp1.ViewModels
 {
-    public class RegistrationPageViewModel : BindableObject
+    public partial class RegistrationPageViewModel : ObservableObject
     {
-        private ObservableCollection<Course> _availableCourses;
-        private DataModel _data;
-        private readonly DataService _dataService;
+        private readonly RegisterAndWithdrawCourseService _registerService;
 
-        public ObservableCollection<Course> AvailableCourses
+        [ObservableProperty]
+        private ObservableCollection<Course> availableCourses;
+
+
+        public RegistrationPageViewModel(RegisterAndWithdrawCourseService registerService)
         {
-            get => _availableCourses;
-            set
-            {
-                _availableCourses = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ICommand GoBackCommand { get; private set; }
-        public ICommand LoadCoursesCommand { get; private set; }
-        public ICommand RegisterCourseCommand { get; private set; }
-
-        public RegistrationPageViewModel(DataService dataService = null)
-        {
-            _dataService = dataService ?? new DataService();
+            _registerService = registerService;
             AvailableCourses = new ObservableCollection<Course>();
 
-            GoBackCommand = new Command(async () => await GoBack());
-            LoadCoursesCommand = new Command(async () => await LoadAvailableCourses());
-            RegisterCourseCommand = new Command<Course>(async (course) => await RegisterCourse(course));
-
-            LoadAvailableCourses();
+            LoadAvailableCoursesAsync();
         }
+        
 
-        private async Task<DataModel> GetDataAsync()
-        {
-            if (_data != null) return _data;
-
-            try
-            {
-                using var stream = await FileSystem.OpenAppPackageFileAsync("data.json");
-                using var reader = new StreamReader(stream);
-                var json = await reader.ReadToEndAsync();
-                _data = JsonSerializer.Deserialize<DataModel>(json, 
-                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                return _data;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error loading JSON: {ex.Message}");
-                throw;
-            }
-        }
-
-        private async Task LoadAvailableCourses()
+        private async void LoadAvailableCoursesAsync()
         {
             try
             {
-                var data = await GetDataAsync();
+                var studentId = await _registerService.GetCurrentStudentIdAsync();
+                if (string.IsNullOrEmpty(studentId))
+                {
+                    await Application.Current.MainPage.DisplayAlert("ข้อผิดพลาด", "ไม่พบข้อมูลนักศึกษา", "ตกลง");
+                    return;
+                }
+
+                var allCourses = await _registerService.GetAvailableCoursesAsync();
+                var registeredCourses = await _registerService.GetStudentCoursesAsync(studentId);
+                var courses = allCourses
+                    .Where(c => c.Status == "open" && !registeredCourses.Any(rc => rc.CourseId == c.CourseId))
+                    .ToList();
+
                 AvailableCourses.Clear();
-                foreach (var course in data.Courses)
+                foreach (var course in courses)
                 {
                     AvailableCourses.Add(course);
                 }
             }
             catch (Exception ex)
             {
-                await Shell.Current.DisplayAlert("Error", "Failed to load courses", "OK");
+                await Application.Current.MainPage.DisplayAlert("ข้อผิดพลาด", $"เกิดข้อผิดพลาด: {ex.Message}", "ตกลง");
             }
         }
 
-        private async Task RegisterCourse(Course course)
+        [RelayCommand]
+        private async Task RegisterAsync(string courseId)
         {
+            var confirm = await Application.Current.MainPage.DisplayAlert("ยืนยัน", $"คุณต้องการลงทะเบียนรายวิชา {courseId} ใช่หรือไม่?", "ใช่", "ไม่");
+            if (!confirm) return;
+
             try
             {
-                var data = await GetDataAsync();
-                var studentId = Preferences.Get("StudentId", "");
-                
+                var studentId = await _registerService.GetCurrentStudentIdAsync();
                 if (string.IsNullOrEmpty(studentId))
                 {
-                    await Shell.Current.DisplayAlert("Error", "Please login first", "OK");
+                    await Application.Current.MainPage.DisplayAlert("ข้อผิดพลาด", "ไม่พบข้อมูลนักศึกษา", "ตกลง");
                     return;
                 }
 
-                if (data.Registrations.TryGetValue(studentId, out var studentReg))
-                {
-                    var isAlreadyRegistered = studentReg.Current?.Any(r => 
-                        r.CourseId == course.CourseId && r.Status == "registered") ?? false;
-
-                    if (isAlreadyRegistered)
-                    {
-                        await Shell.Current.DisplayAlert("Error", "You are already registered for this course", "OK");
-                        return;
-                    }
-                }
-
-                await Shell.Current.DisplayAlert("Success", "Course registered successfully", "OK");
+                await _registerService.RegisterCourseAsync(studentId, courseId);
+                await Application.Current.MainPage.DisplayAlert("สำเร็จ", $"ลงทะเบียนรายวิชา {courseId} เรียบร้อยแล้ว", "ตกลง");
+                LoadAvailableCoursesAsync(); // รีเฟรชรายการ
             }
             catch (Exception ex)
             {
-                await Shell.Current.DisplayAlert("Error", "Failed to register course", "OK");
+                await Application.Current.MainPage.DisplayAlert("ข้อผิดพลาด", $"ไม่สามารถลงทะเบียนได้: {ex.Message}", "ตกลง");
             }
         }
 
-        private async Task GoBack()
+        [RelayCommand]
+        private void Refresh()
         {
-            await Shell.Current.GoToAsync("..");
+            LoadAvailableCoursesAsync();
         }
+        [RelayCommand]
+        public async Task GoBackAsync()
+        {
+            await Shell.Current.GoToAsync("//HomePage");
+        }
+
+      
     }
 }
