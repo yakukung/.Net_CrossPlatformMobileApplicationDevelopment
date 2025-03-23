@@ -16,6 +16,8 @@ public static class MauiProgram
             });
 
         builder.Services.AddSingleton<Services.DataService>();
+        builder.Services.AddSingleton<Services.ProfileService>();
+        builder.Services.AddSingleton<Services.RegisterAndWithdrawCourseService>();
         builder.Services.AddTransient<ViewModels.ProfilePageViewModel>();
         builder.Services.AddTransient<ViewModels.HomePageViewModel>();
         builder.Services.AddTransient<ViewModels.RegistrationPageViewModel>();

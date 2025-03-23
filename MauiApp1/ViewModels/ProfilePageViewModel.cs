@@ -11,12 +11,12 @@ namespace MauiApp1.ViewModels
 {
     public partial class ProfilePageViewModel : BindableObject
     {
-        private readonly DataService _dataService;
+        private readonly ProfileService _profileService;
         private Student? _student;
 
-        public ProfilePageViewModel(DataService dataService)
+        public ProfilePageViewModel(ProfileService profileService)
         {
-            _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));
+            _profileService = profileService ?? throw new ArgumentNullException(nameof(profileService));
             LoadStudentDataCommand = new Command(async () => await LoadStudentDataAsync());
             CurrentCourses = new ObservableCollection<Course>();
 
@@ -60,7 +60,7 @@ namespace MauiApp1.ViewModels
             try
             {
                 // โหลดข้อมูลนักศึกษา
-                var student = await _dataService.LoadCurrentStudentAsync();
+                var student = await _profileService.LoadCurrentStudentAsync();
                 if (student == null)
                 {
                     System.Diagnostics.Debug.WriteLine("No student data found.");
@@ -70,7 +70,7 @@ namespace MauiApp1.ViewModels
                 CurrentStudent = student;
 
                 // โหลดรายวิชาที่ลงทะเบียน
-                var currentCourses = await _dataService.GetStudentCoursesAsync(student.Id);
+                var currentCourses = await _profileService.GetStudentCoursesAsync(student.Id);
                 CurrentCourses.Clear();
                 foreach (var course in currentCourses)
                 {
@@ -78,9 +78,9 @@ namespace MauiApp1.ViewModels
                 }
 
                 // แสดงข้อมูลใน Debug Logs
-                System.Diagnostics.Debug.WriteLine($"Student ID: {CurrentStudent.Id}");
-                System.Diagnostics.Debug.WriteLine($"Student Name: {CurrentStudent.FirstName} {CurrentStudent.LastName}");
-                System.Diagnostics.Debug.WriteLine("Registered Courses:");
+                // System.Diagnostics.Debug.WriteLine($"Student ID: {CurrentStudent.Id}");
+                // System.Diagnostics.Debug.WriteLine($"Student Name: {CurrentStudent.FirstName} {CurrentStudent.LastName}");
+                // System.Diagnostics.Debug.WriteLine("Registered Courses:");
                 foreach (var course in CurrentCourses)
                 {
                     System.Diagnostics.Debug.WriteLine($"- {course.CourseId}: {course.Name}");

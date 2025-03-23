@@ -217,9 +217,32 @@ namespace MauiApp1.Services
         // ดึง ID นักศึกษาปัจจุบัน
         public async Task<string> GetCurrentStudentIdAsync()
         {
-            var data = await GetDataAsync();
-            var currentStudent = data.Students.FirstOrDefault(); // สมมติว่าดึงนักศึกษาคนแรก
-            return currentStudent?.Id ?? string.Empty;
+            try
+            {
+                // ดึง StudentId จาก Preferences
+                string studentId = Preferences.Get("StudentId", string.Empty);
+                if (string.IsNullOrEmpty(studentId))
+                {
+                    System.Diagnostics.Debug.WriteLine("No StudentId found in preferences.");
+                    return string.Empty;
+                }
+
+                // ตรวจสอบว่า StudentId มีอยู่ใน data.json หรือไม่
+                var data = await GetDataAsync();
+                var currentStudent = data.Students.FirstOrDefault(s => s.Id == studentId);
+                if (currentStudent == null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Student with ID {studentId} not found in data.");
+                    return string.Empty;
+                }
+
+                return currentStudent.Id;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error retrieving current student ID: {ex.Message}");
+                return string.Empty;
+            }
         }
 
         // ดึงรายวิชาที่นักศึกษาลงทะเบียนแล้ว
