@@ -10,7 +10,7 @@
           
         <Button Grid.Row="0"
                 Text="ย้อนกลับ"
-                Command="{Binding GoBackCommand}"
+                Command="{Binding goBackCommand}"
                 HorizontalOptions="Start"
                 Margin="0,0,0,20"
                 BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"

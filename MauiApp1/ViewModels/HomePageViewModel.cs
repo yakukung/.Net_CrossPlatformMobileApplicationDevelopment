@@ -56,6 +56,7 @@ namespace MauiApp1.ViewModels
         public ICommand LoadStudentDataCommand { get; }
         public ICommand LogoutCommand { get; }
         public ICommand NavigateToProfileCommand { get; }
+        public ICommand NavigateToRegistrationCommand { get; }
         public ICommand LoadFullDataCommand { get; }
 
         public HomePageViewModel(DataService dataService)
@@ -65,6 +66,7 @@ namespace MauiApp1.ViewModels
             LoadStudentDataCommand = new Command(async () => await LoadStudentDataAsync());
             LogoutCommand = new Command(async () => await LogoutAsync());
             NavigateToProfileCommand = new Command(async () => await NavigateToProfileAsync());
+            NavigateToRegistrationCommand = new Command(async () => await NavigateToRegistrationCommandAsync());
             LoadFullDataCommand = new Command(async () => await LoadFullDataAsync());
 
             LoadStudentDataAsync().ConfigureAwait(false);
@@ -111,6 +113,11 @@ namespace MauiApp1.ViewModels
         private async Task NavigateToProfileAsync()
         {
                 await Shell.Current.GoToAsync("//ProfilePage");
+
+        }
+        private async Task NavigateToRegistrationCommandAsync()
+        {
+                await Shell.Current.GoToAsync("//RegistrationPage");
 
         }
 

@@ -105,6 +105,54 @@
       "prerequisites": ["2110215"],
       "description": "เทคโนโลยีเว็บสมัยใหม่ การพัฒนาเว็บแอปพลิเคชัน เว็บเซอร์วิส RESTful API และการพัฒนาแอปพลิเคชันแบบ Single Page",
       "status": "open"
+    },
+    {
+      "courseId": "2110150",
+      "name": "พื้นฐานวงจรดิจิทัล",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ชัยวัฒน์ ศรีสุข",
+      "schedule": "จันทร์ 13:00-16:00",
+      "room": "ENG3-302",
+      "maxStudents": 40,
+      "currentStudents": 38,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "2/2565",
+      "prerequisites": [],
+      "description": "พื้นฐานของวงจรดิจิทัล เกต逻辑 การออกแบบวงจรคอมบิเนชันและซีเควนเชียล",
+      "status": "closed"
+    },
+    {
+      "courseId": "2110250",
+      "name": "ระบบฐานข้อมูล",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.กานต์พิชชา พัฒนะ",
+      "schedule": "อังคาร 9:00-12:00",
+      "room": "ENG3-402",
+      "maxStudents": 35,
+      "currentStudents": 32,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "2/2565",
+      "prerequisites": ["2110200"],
+      "description": "แนวคิดและการออกแบบฐานข้อมูลเชิงสัมพันธ์ SQL และการจัดการฐานข้อมูล",
+      "status": "closed"
+    },
+    {
+      "courseId": "2110301",
+      "name": "ปัญญาประดิษฐ์เบื้องต้น",
+      "credit": 3,
+      "section": 1,
+      "instructor": "ดร.ธีรภัทร วงศ์วรางค์",
+      "schedule": "พุธ 13:00-16:00",
+      "room": "ENG3-502",
+      "maxStudents": 30,
+      "currentStudents": 25,
+      "faculty": "วิศวกรรมศาสตร์",
+      "term": "1/2566",
+      "prerequisites": ["2110332"],
+      "description": "หลักการพื้นฐานของปัญญาประดิษฐ์ การค้นหา การเรียนรู้ของเครื่อง และการประยุกต์ใช้",
+      "status": "open"
     }
   ],
   "registrations": {
@@ -123,6 +171,12 @@
           "status": "registered"
         },
         {
+          "courseId": "2110301",
+          "term": "1/2566",
+          "registrationDate": "2023-06-16T09:10:00",
+          "status": "registered"
+        },
+        {
           "courseId": "2110422",
           "term": "1/2566",
           "registrationDate": "2023-06-16T09:15:00",
@@ -133,16 +187,30 @@
       "previous": [
         {
           "courseId": "2110101",
+          "term": "1/2565",
+          "grade": "B+",
+          "registrationDate": "2022-07-15T09:00:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110150",
           "term": "2/2565",
           "grade": "A",
-          "registrationDate": "2022-11-10T09:15:00",
+          "registrationDate": "2022-10-20T10:00:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110250",
+          "term": "2/2565",
+          "grade": "B",
+          "registrationDate": "2022-10-20T10:05:00",
           "status": "completed"
         },
         {
           "courseId": "2110332",
-          "term": "3/2565",
+          "term": "2/2565",
           "grade": "B+",
-          "registrationDate": "2023-03-05T14:20:00",
+          "registrationDate": "2022-10-20T10:10:00",
           "status": "completed"
         }
       ]
@@ -156,19 +224,39 @@
           "status": "registered"
         },
         {
-          "courseId": "2110332",
+          "courseId": "2110200",
           "term": "1/2566",
           "registrationDate": "2023-06-14T11:25:00",
+          "status": "registered"
+        },
+        {
+          "courseId": "2110332",
+          "term": "1/2566",
+          "registrationDate": "2023-06-14T11:30:00",
           "status": "withdrawn",
           "withdrawDate": "2023-08-20T13:45:00"
         }
       ],
       "previous": [
         {
-          "courseId": "2110200",
-          "term": "3/2565",
+          "courseId": "2110101",
+          "term": "1/2565",
           "grade": "A",
-          "registrationDate": "2023-03-06T10:10:00",
+          "registrationDate": "2022-07-15T09:15:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110150",
+          "term": "2/2565",
+          "grade": "B+",
+          "registrationDate": "2022-10-20T11:00:00",
+          "status": "completed"
+        },
+        {
+          "courseId": "2110200",
+          "term": "2/2565",
+          "grade": "A",
+          "registrationDate": "2022-10-20T11:05:00",
           "status": "completed"
         }
       ]

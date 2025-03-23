@@ -6,7 +6,6 @@
              BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#1F1F1F}">
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
-            <!-- ส่วนหัว -->
             <Grid RowDefinitions="Auto" ColumnDefinitions="*,Auto" Margin="0,15,0,10">
                 <Label Grid.Column="0"
                        Text="ยินดีต้อนรับ"
@@ -121,7 +120,6 @@
                         <TapGestureRecognizer Command="{Binding NavigateToRegistrationCommand}"/>
                     </Frame.GestureRecognizers>
                     <VerticalStackLayout Spacing="10">
-
                         <Label Text="ลงทะเบียนเรียน"
                                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
                                FontAttributes="Bold"
@@ -141,10 +139,6 @@
                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
                        HasShadow="True">
                     <VerticalStackLayout Spacing="10">
-                        <Image Source="schedule.png"
-                               HeightRequest="40"
-                               WidthRequest="40"
-                               HorizontalOptions="Start"/>
                         <Label Text="ถอนวิชาเรียน"
                                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
                                FontAttributes="Bold"
@@ -155,7 +149,7 @@
                     </VerticalStackLayout>
                 </Frame>
 
-                <!-- ผลการลงทะเบียน -->
+                <!-- ผลการลงทะเบียนถอน -->
                 <Frame Grid.Row="1"
                        Grid.Column="0"
                        BorderColor="Transparent"
@@ -164,15 +158,11 @@
                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
                        HasShadow="True">
                     <VerticalStackLayout Spacing="10">
-                        <Image Source="grades.png"
-                               HeightRequest="40"
-                               WidthRequest="40"
-                               HorizontalOptions="Start"/>
-                        <Label Text="ผลการลงทะเบียน"
+                        <Label Text="ผลการลงทะเบียน - ถอน"
                                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
                                FontAttributes="Bold"
                                FontSize="16"/>
-                        <Label Text="ตรวจสอบผลการลงทะเบียน"
+                        <Label Text="ตรวจสอบผลการลงทะเบียนและถอน"
                                TextColor="{AppThemeBinding Light=#666666, Dark=#BBBBBB}"
                                FontSize="14"/>
                     </VerticalStackLayout>
@@ -190,10 +180,6 @@
                         <TapGestureRecognizer Command="{Binding NavigateToProfileCommand}"/>
                     </Frame.GestureRecognizers>
                     <VerticalStackLayout Spacing="10">
-                        <Image Source="profile.png"
-                               HeightRequest="40"
-                               WidthRequest="40"
-                               HorizontalOptions="Start"/>
                         <Label Text="ข้อมูลส่วนตัว"
                                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
                                FontAttributes="Bold"
