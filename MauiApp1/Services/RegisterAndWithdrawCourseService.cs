@@ -50,7 +50,6 @@ namespace MauiApp1.Services
             }
         }
 
-        // ดึงข้อมูลนักศึกษาแบบเต็ม
         public async Task<object?> GetStudentFullDataAsync(string studentId)
         {
             if (string.IsNullOrEmpty(studentId))
@@ -329,6 +328,11 @@ namespace MauiApp1.Services
                     if (course != null) course.CurrentStudents--;
 
                     await SaveDataAsync(data, courseId);
+        
+                var dataService = new DataService();
+        
+                // โหลดข้อมูลใหม่ใน UI
+                await dataService.LoadStudentDataAsync();
                 }
                 else
                 {
@@ -419,6 +423,22 @@ namespace MauiApp1.Services
 
             return new List<Course>();
         }
+
+        // ดึงเฉพาะรายวิชาที่ลงทะเบียนและยังไม่ได้ถอน
+public async Task<List<Course>> GetRegisteredCoursesAsync(string studentId)
+{
+    var data = await GetDataAsync();
+    if (data.Registrations.TryGetValue(studentId, out var registration))
+    {
+        return registration.Current
+            .Where(r => r.Status == "registered") // เฉพาะวิชาที่ยังไม่ได้ถอน
+            .Select(r => MapCourse(data.Courses, r))
+            .Where(c => c != null)
+            .ToList()!;
+    }
+
+    return new List<Course>();
+}
 
         // Helper method สำหรับ MapCourse
         private Course? MapCourse(List<Course> courses, Registration reg)

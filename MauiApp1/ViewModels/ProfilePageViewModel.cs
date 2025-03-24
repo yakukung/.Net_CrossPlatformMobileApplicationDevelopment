@@ -13,6 +13,20 @@ namespace MauiApp1.ViewModels
     {
         private readonly ProfileService _profileService;
         private Student? _student;
+        private string _currentTermDisplay = "วิชาที่ลงทะเบียนเทอมนี้";
+
+        public string CurrentTermDisplay
+        {
+            get => _currentTermDisplay;
+            set
+            {
+                if (_currentTermDisplay != value)
+                {
+                    _currentTermDisplay = value;
+                    OnPropertyChanged(nameof(CurrentTermDisplay));
+                }
+            }
+        }
 
         public ProfilePageViewModel(ProfileService profileService)
         {
@@ -70,11 +84,21 @@ namespace MauiApp1.ViewModels
                 CurrentStudent = student;
 
                 // โหลดรายวิชาที่ลงทะเบียน
-                var currentCourses = await _profileService.GetStudentCoursesAsync(student.Id);
+                var result = await _profileService.GetStudentCoursesAsync(student.Id);
                 CurrentCourses.Clear();
-                foreach (var course in currentCourses)
+                foreach (var course in result.Courses)
                 {
                     CurrentCourses.Add(course);
+                }
+                
+                // อัพเดทข้อมูลเทอม
+                if (!string.IsNullOrEmpty(result.Term))
+                {
+                    CurrentTermDisplay = $"วิชาที่ลงทะเบียนเทอมนี้ ({result.Term})";
+                }
+                else
+                {
+                    CurrentTermDisplay = "วิชาที่ลงทะเบียนเทอมนี้";
                 }
 
                 // แสดงข้อมูลใน Debug Logs

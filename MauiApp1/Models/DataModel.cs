@@ -9,6 +9,27 @@ namespace MauiApp1.Models
         public List<Student> Students { get; set; } = new List<Student>();
         public List<Course> Courses { get; set; } = new List<Course>();
         public Dictionary<string, RegistrationData> Registrations { get; set; } = new Dictionary<string, RegistrationData>();
+        public List<Term> Terms { get; set; } = new List<Term>();
+    }
+
+    // Term Model
+    public class Term
+    {
+        public string Id { get; set; } = string.Empty; // Term ID (e.g., "1/2567")
+        public string Name { get; set; } = string.Empty; // Term Name (e.g., "ภาคต้น ปีการศึกษา 2567")
+        public bool IsCurrent { get; set; } // Is Current Term
+        public DateTime StartDate { get; set; } // Term Start Date
+        public DateTime EndDate { get; set; } // Term End Date
+        public RegistrationPeriod RegistrationPeriod { get; set; } = new RegistrationPeriod(); // Registration Period
+        public RegistrationPeriod AddDropPeriod { get; set; } = new RegistrationPeriod(); // Add/Drop Period
+        public DateTime WithdrawDeadline { get; set; } // Withdraw Deadline
+    }
+
+    // Registration Period Model
+    public class RegistrationPeriod
+    {
+        public DateTime Start { get; set; } // Period Start Date
+        public DateTime End { get; set; } // Period End Date
     }
 
     // RegistrationData Class

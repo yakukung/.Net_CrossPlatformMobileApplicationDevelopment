@@ -5,10 +5,12 @@ using MauiApp1.Models;
 using MauiApp1.Services;
 using MauiApp1.Views;
 using System.Collections.Generic;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace MauiApp1.ViewModels
 {
-    public class HomePageViewModel : BindableObject
+    public partial class HomePageViewModel : BindableObject
     {
         private readonly DataService _dataService;
         private Student _student = new Student();
@@ -53,25 +55,15 @@ namespace MauiApp1.ViewModels
         public List<Course> Courses { get; set; }
         public Dictionary<string, RegistrationData> Registrations { get; set; }
 
-        public ICommand LoadStudentDataCommand { get; }
-        public ICommand LogoutCommand { get; }
-        public ICommand NavigateToProfileCommand { get; }
-        public ICommand NavigateToRegistrationCommand { get; }
-        public ICommand LoadFullDataCommand { get; }
 
         public HomePageViewModel(DataService dataService)
         {
             _dataService = dataService;
 
-            LoadStudentDataCommand = new Command(async () => await LoadStudentDataAsync());
-            LogoutCommand = new Command(async () => await LogoutAsync());
-            NavigateToProfileCommand = new Command(async () => await NavigateToProfileAsync());
-            NavigateToRegistrationCommand = new Command(async () => await NavigateToRegistrationCommandAsync());
-
             LoadStudentDataAsync().ConfigureAwait(false);
         }
 
-        // ตัวที่แยกเรียกใช้แต่ละข้อมูลที่เราจะเอาแสดง
+        [RelayCommand]
         private async Task LoadStudentDataAsync()
         {
             try
@@ -94,28 +86,42 @@ namespace MauiApp1.ViewModels
                 System.Diagnostics.Debug.WriteLine($"Error loading student data: {ex.Message}");
             }
         }
-
+        [RelayCommand]
         private async Task LogoutAsync()
         {
             try
             {
                 // System.Diagnostics.Debug.WriteLine("User logged out successfully.");
-                await Shell.Current.GoToAsync("//LoginPage");
+                await Shell.Current.GoToAsync("LoginPage");
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error during logout: {ex.Message}");
             }
         }
+        [RelayCommand]
         private async Task NavigateToProfileAsync()
         {
-                await Shell.Current.GoToAsync("//ProfilePage");
+                await Shell.Current.GoToAsync("ProfilePage");
 
         }
-        private async Task NavigateToRegistrationCommandAsync()
+        [RelayCommand]
+        private async Task NavigateToRegistrationAsync()
         {
-                await Shell.Current.GoToAsync("//RegistrationPage");
+                await Shell.Current.GoToAsync("RegistrationPage");
 
+        }
+        [RelayCommand]
+        private async Task NavigateToWithdrawAsync()
+        {
+                await Shell.Current.GoToAsync("WithdrawPage");
+
+        }
+
+        [RelayCommand]
+        private async Task NavigateToHistory()
+        {
+                await Shell.Current.GoToAsync("HistoryPage");
         }
 
     }

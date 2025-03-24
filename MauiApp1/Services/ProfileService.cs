@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.ComponentModel;
 using MauiApp1.Models;
 
 namespace MauiApp1.Services;
@@ -78,34 +79,47 @@ public class ProfileService
         }
     }
 
-    public async Task<List<Course>> GetStudentCoursesAsync(string studentId)
+    public async Task<(List<Course> Courses, string Term)> GetStudentCoursesAsync(string studentId)
     {
         try
         {
             var data = await GetDataAsync();
+            string currentTerm = "";
             
             if (data.Registrations.TryGetValue(studentId, out var registrationData))
             {
-                // ดึงรายวิชาที่ลงทะเบียนปัจจุบัน
+                // ดึงเฉพาะรายวิชาที่ลงทะเบียนและยังไม่ได้ถอน
                 var courses = new List<Course>();
-                foreach (var registration in registrationData.Current)
+                
+                // เรียงลำดับตามวันที่ลงทะเบียนล่าสุดก่อน
+                var sortedRegistrations = registrationData.Current
+                    .Where(r => r.Status == "registered")
+                    .OrderByDescending(r => r.RegistrationDate)
+                    .ToList();
+                
+                foreach (var registration in sortedRegistrations)
                 {
                     var course = data.Courses.FirstOrDefault(c => c.CourseId == registration.CourseId);
                     if (course != null)
                     {
                         courses.Add(course);
+                        // ดึงข้อมูลเทอมจากรายวิชาแรก
+                        if (string.IsNullOrEmpty(currentTerm) && !string.IsNullOrEmpty(course.Term))
+                        {
+                            currentTerm = course.Term;
+                        }
                     }
                 }
                 
-                return courses;
+                return (courses, currentTerm);
             }
             
-            return new List<Course>();
+            return (new List<Course>(), "");
         }
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"Error getting student courses: {ex.Message}");
-            return new List<Course>();
+            return (new List<Course>(), "");
         }
     }
 }

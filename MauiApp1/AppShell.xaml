@@ -26,4 +26,14 @@
         ContentTemplate="{DataTemplate views:RegistrationPage}"
         Route="RegistrationPage" />
 
+    <ShellContent
+        Title="WithdrawPage"
+        ContentTemplate="{DataTemplate views:WithdrawPage}"
+        Route="WithdrawPage" />
+
+    <ShellContent
+        Title="HistoryPage"
+        ContentTemplate="{DataTemplate views:HistoryPage}"
+        Route="HistoryPage" />
+
 </Shell>

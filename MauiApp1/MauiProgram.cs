@@ -18,13 +18,18 @@ public static class MauiProgram
         builder.Services.AddSingleton<Services.DataService>();
         builder.Services.AddSingleton<Services.ProfileService>();
         builder.Services.AddSingleton<Services.RegisterAndWithdrawCourseService>();
+
         builder.Services.AddTransient<ViewModels.ProfilePageViewModel>();
         builder.Services.AddTransient<ViewModels.HomePageViewModel>();
         builder.Services.AddTransient<ViewModels.RegistrationPageViewModel>();
+        builder.Services.AddTransient<ViewModels.WithdrawPageViewModel>();
+        builder.Services.AddTransient<ViewModels.HistoryViewModel>();
 
         builder.Services.AddTransient<Views.ProfilePage>();
         builder.Services.AddTransient<Views.HomePage>();
         builder.Services.AddTransient<Views.RegistrationPage>();
+        builder.Services.AddTransient<Views.WithdrawPage>();
+        builder.Services.AddTransient<Views.HistoryPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

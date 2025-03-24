@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Views.HistoryPage"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels"
+             Title="ประวัติการลงทะเบียน"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#1C1C1E}">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto,*"
+              RowSpacing="20"
+              Padding="24"
+              BackgroundColor="{AppThemeBinding Light=White, Dark=#1C1C1E}">
+
+            <!-- Header -->
+            <VerticalStackLayout Grid.Row="0">
+                <Label Text="ประวัติการลงทะเบียนและถอนรายวิชา"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"
+                       Margin="0,0,0,8"/>
+                <Label Text="{Binding StudentInfo}"
+                       FontSize="16"
+                       TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"
+                       Margin="0,0,0,8"/>
+                <Label Text="{Binding CurrentTermDisplay}"
+                       FontSize="16"
+                       TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"
+                       Margin="0,0,0,16"/>
+            </VerticalStackLayout>
+
+            <!-- Term Tabs -->
+            <Grid Grid.Row="1" 
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="10">
+                <Button Text="เทอมปัจจุบัน" 
+                        Grid.Column="0"
+                        Command="{Binding ShowCurrentCommand}"
+                        BackgroundColor="{Binding CurrentTabColor}"
+                        TextColor="{Binding CurrentTabTextColor}"
+                        CornerRadius="8"/>
+                <Button Text="เทอมก่อนหน้า" 
+                        Grid.Column="1"
+                        Command="{Binding ShowPreviousCommand}"
+                        BackgroundColor="{Binding PreviousTabColor}"
+                        TextColor="{Binding PreviousTabTextColor}"
+                        CornerRadius="8"/>
+            </Grid>
+
+            <!-- Registration/Withdrawal Tabs -->
+            <Grid Grid.Row="2" 
+                  ColumnDefinitions="*,*"
+                  ColumnSpacing="10">
+                <Button Text="ลงทะเบียน" 
+                        Grid.Column="0"
+                        Command="{Binding ShowRegistrationsCommand}"
+                        BackgroundColor="{Binding RegistrationTabColor}"
+                        TextColor="{Binding RegistrationTabTextColor}"
+                        CornerRadius="8"/>
+                <Button Text="ถอนรายวิชา" 
+                        Grid.Column="1"
+                        Command="{Binding ShowWithdrawalsCommand}"
+                        BackgroundColor="{Binding WithdrawalTabColor}"
+                        TextColor="{Binding WithdrawalTabTextColor}"
+                        CornerRadius="8"/>
+            </Grid>
+
+            <!-- Content -->
+            <CollectionView Grid.Row="3"
+                            ItemsSource="{Binding HistoryItems}"
+                            EmptyView="ไม่พบข้อมูลประวัติ">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="0,8"
+                                Stroke="{AppThemeBinding Light=#f5f5f7, Dark=#2C2C2E}"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12">
+                            <Grid Padding="20"
+                                  RowDefinitions="Auto,Auto,Auto,Auto"
+                                  RowSpacing="12">
+                                <Grid Grid.Row="0"
+                                      ColumnDefinitions="*,Auto">
+                                    <Label Text="{Binding CourseName}"
+                                           Grid.Column="0"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                                    <Label Text="{Binding StatusDisplay}"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           TextColor="{Binding StatusColor}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="1"
+                                      ColumnDefinitions="Auto,*,Auto,*"
+                                      ColumnSpacing="16">
+                                    <Label Text="รหัสวิชา"
+                                           Grid.Column="0"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                    <Label Text="{Binding CourseId}"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                                    <Label Text="หน่วยกิต"
+                                           Grid.Column="2"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                    <Label Text="{Binding Credits}"
+                                           Grid.Column="3"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="2"
+                                      ColumnDefinitions="Auto,*,Auto,*"
+                                      ColumnSpacing="16">
+                                    <Label Text="ตอนเรียน"
+                                           Grid.Column="0"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                    <Label Text="{Binding Section}"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                                    <Label Text="อาจารย์"
+                                           Grid.Column="2"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                    <Label Text="{Binding Instructor}"
+                                           Grid.Column="3"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="3"
+                                      ColumnDefinitions="Auto,*"
+                                      ColumnSpacing="16">
+                                    <Label Text="วันที่"
+                                           Grid.Column="0"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                    <Label Text="{Binding RegistrationDateDisplay}"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"
+                                           IsVisible="{Binding IsRegistration}"/>
+                                    <Label Text="{Binding WithdrawalDateDisplay}"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"
+                                           IsVisible="{Binding IsWithdrawal}"/>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -131,6 +131,9 @@
                        Padding="15"
                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
                        HasShadow="True">
+                     <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToWithdrawCommand}"/>
+                    </Frame.GestureRecognizers>
                     <VerticalStackLayout Spacing="10">
                         <Label Text="ถอนวิชาเรียน"
                                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
@@ -150,6 +153,9 @@
                        Padding="15"
                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2C2C2C}"
                        HasShadow="True">
+                        <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToHistoryCommand}"/>
+                    </Frame.GestureRecognizers>
                     <VerticalStackLayout Spacing="10">
                         <Label Text="ผลการลงทะเบียน - ถอน"
                                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
