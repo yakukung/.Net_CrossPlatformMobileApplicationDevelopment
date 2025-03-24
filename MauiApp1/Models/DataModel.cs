@@ -18,18 +18,18 @@ namespace MauiApp1.Models
         public string Id { get; set; } = string.Empty; // Term ID (e.g., "1/2567")
         public string Name { get; set; } = string.Empty; // Term Name (e.g., "ภาคต้น ปีการศึกษา 2567")
         public bool IsCurrent { get; set; } // Is Current Term
-        public DateTime StartDate { get; set; } // Term Start Date
-        public DateTime EndDate { get; set; } // Term End Date
+        public string StartDate { get; set; } = string.Empty; // Term Start Date (เปลี่ยนเป็น string)
+        public string EndDate { get; set; } = string.Empty; // Term End Date (เปลี่ยนเป็น string)
         public RegistrationPeriod RegistrationPeriod { get; set; } = new RegistrationPeriod(); // Registration Period
         public RegistrationPeriod AddDropPeriod { get; set; } = new RegistrationPeriod(); // Add/Drop Period
-        public DateTime WithdrawDeadline { get; set; } // Withdraw Deadline
+        public string WithdrawDeadline { get; set; } = string.Empty; // Withdraw Deadline (เปลี่ยนเป็น string)
     }
 
     // Registration Period Model
     public class RegistrationPeriod
     {
-        public DateTime Start { get; set; } // Period Start Date
-        public DateTime End { get; set; } // Period End Date
+        public string Start { get; set; } = string.Empty; // Period Start Date (เปลี่ยนเป็น string)
+        public string End { get; set; } = string.Empty; // Period End Date (เปลี่ยนเป็น string)
     }
 
     // RegistrationData Class

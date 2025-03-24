@@ -31,19 +31,25 @@
 
             <!-- Term Tabs -->
             <Grid Grid.Row="1" 
-                  ColumnDefinitions="*,*"
+                  ColumnDefinitions="*,*,*"
                   ColumnSpacing="10">
-                <Button Text="เทอมปัจจุบัน" 
+                <Button Text="{Binding Term1Text}" 
                         Grid.Column="0"
-                        Command="{Binding ShowCurrentCommand}"
-                        BackgroundColor="{Binding CurrentTabColor}"
-                        TextColor="{Binding CurrentTabTextColor}"
+                        Command="{Binding SelectTerm1Command}"
+                        BackgroundColor="{Binding Term1TabColor}"
+                        TextColor="{Binding Term1TabTextColor}"
                         CornerRadius="8"/>
-                <Button Text="เทอมก่อนหน้า" 
+                <Button Text="{Binding Term2Text}" 
                         Grid.Column="1"
-                        Command="{Binding ShowPreviousCommand}"
-                        BackgroundColor="{Binding PreviousTabColor}"
-                        TextColor="{Binding PreviousTabTextColor}"
+                        Command="{Binding SelectTerm2Command}"
+                        BackgroundColor="{Binding Term2TabColor}"
+                        TextColor="{Binding Term2TabTextColor}"
+                        CornerRadius="8"/>
+                <Button Text="{Binding Term3Text}" 
+                        Grid.Column="2"
+                        Command="{Binding SelectTerm3Command}"
+                        BackgroundColor="{Binding Term3TabColor}"
+                        TextColor="{Binding Term3TabTextColor}"
                         CornerRadius="8"/>
             </Grid>
 
@@ -78,6 +84,7 @@
                             <Grid Padding="20"
                                   RowDefinitions="Auto,Auto,Auto,Auto"
                                   RowSpacing="12">
+                                <!-- Course Name and Status -->
                                 <Grid Grid.Row="0"
                                       ColumnDefinitions="*,Auto">
                                     <Label Text="{Binding CourseName}"
@@ -91,6 +98,7 @@
                                            TextColor="{Binding StatusColor}"/>
                                 </Grid>
 
+                                <!-- Course Details - First Row -->
                                 <Grid Grid.Row="1"
                                       ColumnDefinitions="Auto,*,Auto,*"
                                       ColumnSpacing="16">
@@ -99,6 +107,28 @@
                                            FontSize="14"
                                            TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
                                     <Label Text="{Binding CourseId}"
+                                           Grid.Column="1"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                                    <Label Text="เทอม"
+                                           Grid.Column="2"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                    <Label Text="{Binding Term, StringFormat='{0}'}"
+                                           Grid.Column="3"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
+                                </Grid>
+
+                                <!-- Course Details - Second Row -->
+                                <Grid Grid.Row="2"
+                                      ColumnDefinitions="Auto,*,Auto,*"
+                                      ColumnSpacing="16">
+                                    <Label Text="Section"
+                                           Grid.Column="0"
+                                           FontSize="14"
+                                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
+                                    <Label Text="{Binding Section}"
                                            Grid.Column="1"
                                            FontSize="14"
                                            TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
@@ -112,41 +142,29 @@
                                            TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
                                 </Grid>
 
-                                <Grid Grid.Row="2"
+                                <!-- Instructor and Date -->
+                                <Grid Grid.Row="3"
                                       ColumnDefinitions="Auto,*,Auto,*"
                                       ColumnSpacing="16">
-                                    <Label Text="ตอนเรียน"
-                                           Grid.Column="0"
-                                           FontSize="14"
-                                           TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
-                                    <Label Text="{Binding Section}"
-                                           Grid.Column="1"
-                                           FontSize="14"
-                                           TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
                                     <Label Text="อาจารย์"
-                                           Grid.Column="2"
+                                           Grid.Column="0"
                                            FontSize="14"
                                            TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
                                     <Label Text="{Binding Instructor}"
-                                           Grid.Column="3"
+                                           Grid.Column="1"
                                            FontSize="14"
                                            TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"/>
-                                </Grid>
-
-                                <Grid Grid.Row="3"
-                                      ColumnDefinitions="Auto,*"
-                                      ColumnSpacing="16">
                                     <Label Text="วันที่"
-                                           Grid.Column="0"
+                                           Grid.Column="2"
                                            FontSize="14"
                                            TextColor="{AppThemeBinding Light=#86868b, Dark=#8E8E93}"/>
                                     <Label Text="{Binding RegistrationDateDisplay}"
-                                           Grid.Column="1"
+                                           Grid.Column="3"
                                            FontSize="14"
                                            TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"
                                            IsVisible="{Binding IsRegistration}"/>
                                     <Label Text="{Binding WithdrawalDateDisplay}"
-                                           Grid.Column="1"
+                                           Grid.Column="3"
                                            FontSize="14"
                                            TextColor="{AppThemeBinding Light=#1d1d1f, Dark=White}"
                                            IsVisible="{Binding IsWithdrawal}"/>

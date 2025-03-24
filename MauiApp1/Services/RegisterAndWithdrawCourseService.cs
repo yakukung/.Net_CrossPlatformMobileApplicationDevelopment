@@ -148,7 +148,7 @@ namespace MauiApp1.Services
                     CourseId = courseId,
                     Term = course.Term,
                     Status = "registered",
-                    RegistrationDate = DateTime.UtcNow
+                    RegistrationDate = DateTime.Now
                 });
         
                 await SaveDataAsync(data, courseId);
@@ -306,43 +306,37 @@ namespace MauiApp1.Services
                 return 0;
             }
         }
-        // ถอนรายวิชา
+        // Make sure this method exists in your service
         public async Task WithdrawCourseAsync(string studentId, string courseId)
         {
-            if (string.IsNullOrEmpty(studentId) || string.IsNullOrEmpty(courseId))
-                throw new ArgumentException("Student ID และ Course ID ต้องไม่เป็นค่าว่าง");
-
             try
             {
                 var data = await GetDataAsync();
-                if (data.Registrations.TryGetValue(studentId, out var registration))
+                if (!data.Registrations.TryGetValue(studentId, out var registration))
                 {
-                    var reg = registration.Current.FirstOrDefault(r => r.CourseId == courseId && r.Status == "registered");
-                    if (reg == null)
-                        throw new Exception("ไม่พบรายวิชานี้ในรายการลงทะเบียนปัจจุบัน");
-
-                    reg.Status = "withdrawn";
-                    reg.WithdrawDate = DateTime.UtcNow;
-
-                    var course = data.Courses.FirstOrDefault(c => c.CourseId == courseId);
-                    if (course != null) course.CurrentStudents--;
-
-                    await SaveDataAsync(data, courseId);
+                    throw new Exception("ไม่พบข้อมูลการลงทะเบียน");
+                }
         
+                var courseRegistration = registration.Current.FirstOrDefault(r => r.CourseId == courseId && r.Status == "registered");
+                if (courseRegistration == null)
+                {
+                    throw new Exception("ไม่พบรายวิชาที่ลงทะเบียน");
+                }
+        
+                // เปลี่ยนสถานะเป็น withdrawn
+                courseRegistration.Status = "withdrawn";
+                courseRegistration.WithdrawDate = DateTime.Now;
+        
+                await SaveDataAsync(data, courseId);
+        
+                // รีเฟรชข้อมูลใน DataService
                 var dataService = new DataService();
-        
-                // โหลดข้อมูลใหม่ใน UI
                 await dataService.LoadStudentDataAsync();
-                }
-                else
-                {
-                    throw new Exception("ไม่พบข้อมูลการลงทะเบียนของนักศึกษา");
-                }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"เกิดข้อผิดพลาดในการถอนรายวิชา: {ex.Message}");
-                throw;
+                System.Diagnostics.Debug.WriteLine($"Error withdrawing course: {ex.Message}");
+                throw; // ส่งต่อข้อผิดพลาดเพื่อให้ UI จัดการได้
             }
         }
 
@@ -432,6 +426,21 @@ public async Task<List<Course>> GetRegisteredCoursesAsync(string studentId)
     {
         return registration.Current
             .Where(r => r.Status == "registered") // เฉพาะวิชาที่ยังไม่ได้ถอน
+            .Select(r => MapCourse(data.Courses, r))
+            .Where(c => c != null)
+            .ToList()!;
+    }
+
+    return new List<Course>();
+}
+
+public async Task<List<Course>> GetWithdrawnCoursesAsync(string studentId)
+{
+    var data = await GetDataAsync();
+    if (data.Registrations.TryGetValue(studentId, out var registration))
+    {
+        return registration.Current
+            .Where(r => r.Status == "withdrawn") // เฉพาะวิชาที่ถอนแล้ว
             .Select(r => MapCourse(data.Courses, r))
             .Where(c => c != null)
             .ToList()!;

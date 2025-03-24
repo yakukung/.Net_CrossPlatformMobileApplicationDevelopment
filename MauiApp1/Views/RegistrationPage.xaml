@@ -4,64 +4,59 @@
              x:Class="MauiApp1.Views.RegistrationPage"
              Title="ลงทะเบียนรายวิชา">
 
-    <!-- ใช้ ScrollView เพื่อให้เลื่อนดูข้อมูลได้ -->
     <ScrollView>
         <StackLayout Padding="10">
             <Label Text="รายวิชาที่เปิดให้ลงทะเบียน"
-                    FontSize="35"
-                    FontAttributes="Bold"
-                    Margin="0,20,0,20"
+                   FontSize="35"
+                   FontAttributes="Bold"
+                   Margin="0,40,0,20"
+                   HorizontalOptions="Center"/>
+
+
+            <SearchBar Placeholder="ค้นหาชื่อรายวิชา..."
+                       Text="{Binding SearchText, Mode=TwoWay}"
+                       SearchCommand="{Binding SearchCommand}"
+                       Margin="0,20,0,20"
+                       HeightRequest="44"
+                       BackgroundColor="{AppThemeBinding Light=White, Dark=#333333}"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                       PlaceholderColor="Gray"/>
+            <Button Grid.Column="1"
+                    Text="รีเฟรช"
+                    Command="{Binding RefreshCommand}"
+                    BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="20"
+                    HeightRequest="44"
                     HorizontalOptions="Center"/>
 
-            <Grid ColumnDefinitions="*,*"
-                    Padding="0,10,0,0">
-                <Button Grid.Column="0"
-                        Text="ย้อนกลับ"
-                        Command="{Binding GoBackCommand}"
-                        BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"
-                        TextColor="White"
-                        FontSize="16"
-                        CornerRadius="20"
-                        HeightRequest="44"
-                        HorizontalOptions="Center"/>
+            <BoxView HeightRequest="1"
+                     BackgroundColor="LightGray"
+                     Margin="0,20,0,20"/>
 
-                <Button Grid.Column="1"
-                        Text="รีเฟรช"
-                        Command="{Binding RefreshCommand}"
-                        BackgroundColor="{AppThemeBinding Light=#0071e3, Dark=#0A84FF}"
-                        TextColor="White"
-                        FontSize="16"
-                        CornerRadius="20"
-                        HeightRequest="44"
-                        HorizontalOptions="Center"/>
-            </Grid>
-                        <BoxView HeightRequest="1"
-                    BackgroundColor="LightGray"
-                    Margin="0,20,0,20"/>
-
-            <!-- รายวิชา -->
             <CollectionView ItemsSource="{Binding AvailableCourses}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
                             <Grid Padding="5"
-                                    ColumnDefinitions="Auto,*,Auto"
-                                    RowDefinitions="Auto,Auto,Auto">
+                                  ColumnDefinitions="Auto,*,Auto"
+                                  RowDefinitions="Auto,Auto,Auto">
                                 <!-- Course ID -->
                                 <Label Grid.Row="0"
-                                        Grid.Column="0"
-                                        Text="{Binding CourseId}"
-                                        FontSize="16"
-                                        FontAttributes="Bold"
-                                        VerticalOptions="Center"/>
+                                       Grid.Column="0"
+                                       Text="{Binding CourseId}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"/>
 
                                 <!-- Course Name -->
                                 <Label Grid.Row="0"
-                                        Grid.Column="1"
-                                        Text="{Binding Name}"
-                                        FontSize="16"
-                                        VerticalOptions="Center"
-                                        Margin="10,0,0,0"/>
+                                       Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       FontSize="16"
+                                       VerticalOptions="Center"
+                                       Margin="10,0,0,0"/>
 
                                 <!-- Register Button -->
                                 <Button Grid.Row="0"
@@ -78,31 +73,29 @@
 
                                 <!-- Course Time -->
                                 <Label Grid.Row="1"
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="3"
-                                        Text="{Binding Schedule, StringFormat='เวลาเรียน: {0}'}"
-                                        FontSize="14"
-                                        TextColor="Gray"/>
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="3"
+                                       Text="{Binding Schedule, StringFormat='เวลาเรียน: {0}'}"
+                                       FontSize="14"
+                                       TextColor="Gray"/>
 
                                 <!-- Instructor -->
                                 <Label Grid.Row="2"
-                                        Grid.Column="0"
-                                        Grid.ColumnSpan="3"
-                                        Text="{Binding Instructor, StringFormat='ผู้สอน: {0}'}"
-                                        FontSize="14"
-                                        TextColor="Gray"/>
+                                       Grid.Column="0"
+                                       Grid.ColumnSpan="3"
+                                       Text="{Binding Instructor, StringFormat='ผู้สอน: {0}'}"
+                                       FontSize="14"
+                                       TextColor="Gray"/>
                             </Grid>
 
                             <!-- Divider -->
                             <BoxView HeightRequest="1"
-                                    BackgroundColor="LightGray"
-                                    Margin="0,10,0,10"/>
+                                     BackgroundColor="LightGray"
+                                     Margin="0,10,0,10"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-
         </StackLayout>
     </ScrollView>
 </ContentPage>
