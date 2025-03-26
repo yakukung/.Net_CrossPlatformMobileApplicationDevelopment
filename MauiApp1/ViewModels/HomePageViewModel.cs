@@ -92,7 +92,7 @@ namespace MauiApp1.ViewModels
             try
             {
                 // System.Diagnostics.Debug.WriteLine("User logged out successfully.");
-                await Shell.Current.GoToAsync("LoginPage");
+                await Shell.Current.GoToAsync("//LoginPage");
             }
             catch (Exception ex)
             {
